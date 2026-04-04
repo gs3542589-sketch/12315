@@ -34,6 +34,11 @@
 - summarize-pro：20功能摘要引擎，支持多格式多语言
 - clonev：声音克隆Coqui XTTS v2，6-30秒样本，14+语言
 
+## 重大教训（防踩坑）
+- 汇报必须验证，禁止推测！Git推送后必须检查git log确认远程同步
+- "命令返回ok" ≠ "功能正常"，必须实际验证效果
+- 未验证的项不得标记完成，如实标注状态
+
 ### Phase1执行记录（2026-04-04）
 - [x] 技能树构建完成，59用户+42系统技能分类
 - [x] 深度阅读seedance-shot-design/coding/claude-code/context7-docs/remind-me/summarize-pro/agent-browser/auto-updater/free-ride/api-gateway/self-improving/capability-evolver/prompt-optimizer/creative-toolkit
