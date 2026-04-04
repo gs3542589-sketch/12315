@@ -1,12 +1,21 @@
 # self-improving/heartbeat-state.md
 
 ## Heartbeat State
-Last heartbeat run: 2026-04-04T13:44:00+08:00
+Last heartbeat run: 2026-04-04T16:02:00+08:00
+⚠️ QMD索引cron存在严重问题：连续失败6次，详见下方根因分析
 
 ## QMD Index Status
-- Last QMD rebuild: 2026-04-04T13:44:00+08:00 ✅
-- Status: ✅ Running normally
-- 3 collections indexed, 0 new, 0 updated
+- Last QMD rebuild: 2026-04-04T13:44:00+08:00 ⚠️ (手动记录，此后连续失败)
+- Status: 🔴 **连续失败6次** - qmd命令不可用
+- 错误原因: Windows环境下qmd CLI缺失（`/bin/sh` not found）
+- 已执行操作: 记录状态，不再重复尝试
+- 下一步: 需要安装qmd CLI或使用替代方案
+
+## 根因分析（2026-04-04 16:02）
+- cron任务"QMD索引重建"已连续失败6次
+- 错误: `error: interpreter executable "/bin/sh" not found in %PATH%` + `Bun failed to remap`
+- 原因: qmd CLI依赖Bun，但Windows环境下qmd不可用
+- 修复方案: 需要在Windows上安装qmd，或寻找替代索引方案
 
 ## Maintenance Log
 - 2026-04-04: 创建self-improving目录结构
@@ -17,12 +26,15 @@ Last heartbeat run: 2026-04-04T13:44:00+08:00
 - 2026-04-04: 创建会话compaction检查机制
 - 2026-04-04: Git push成功（28335a0）
 - 2026-04-04 13:35: Git push失败（connection reset），待网络恢复后重试
+- 2026-04-04 13:44: Git push成功（27e2277）✅
+- 2026-04-04 16:02: QMD索引cron检查 - 发现连续6次失败，qmd CLI不可用⚠️
 
 ## Pending Reviews
 - [ ] Verify daily learning cron executes at 08:00
 - [ ] Verify daily summary cron executes at 21:00
 - [ ] Review corrections.md for 3x pattern promotion
-- [ ] ⚠️ Git push 失败（connection reset），待网络恢复
+- [x] Git push 成功（27e2277）✅
+- [ ] **QMD索引cron已连续失败6次**，需要修复qmd可用性问题
 
 ## Patterns to Watch
 - "汇报必须验证" - used 2x, needs 1 more to promote to HOT
@@ -33,7 +45,7 @@ Last heartbeat run: 2026-04-04T13:44:00+08:00
 ### 未执行的计划（已补救）
 | 计划 | 原状态 | 现状态 |
 |-----|--------|---------|
-| QMD每5分钟自动索引 | ❌ 从未实现 | ✅ cron每5分钟 |
+| QMD每5分钟自动索引 | ❌ 从未实现 | ⚠️ cron存在但连续失败6次，qmd不可用 |
 | 每日精简记忆 | ❌ 从未执行 | ✅ 纳入每日总结 |
 | 每周深度清理 | ❌ 从未执行 | ✅ cron每周日02:00 |
 | 启动流程8步 | ❌ 从未运行 | ✅ BOOTSTRAP.md |
