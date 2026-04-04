@@ -1,12 +1,12 @@
 # self-improving/heartbeat-state.md
 
 ## Heartbeat State
-Last heartbeat run: 2026-04-04T13:35:12+08:00
+Last heartbeat run: 2026-04-04T13:44:00+08:00
 
 ## QMD Index Status
-- Last QMD rebuild: 2026-04-04T13:35:12+08:00 ✅
-- Status: ✅ Running normally - 用 `node <qmd.js>` 绕过 bunx shim 问题
-- Note: bunx shim 依赖 /bin/sh，Windows 不兼容；已找到正确调用方式
+- Last QMD rebuild: 2026-04-04T13:44:00+08:00 ✅
+- Status: ✅ Running normally
+- 3 collections indexed, 0 new, 0 updated
 
 ## Maintenance Log
 - 2026-04-04: 创建self-improving目录结构
@@ -16,11 +16,13 @@ Last heartbeat run: 2026-04-04T13:35:12+08:00
 - 2026-04-04: 创建每周系统自查cron
 - 2026-04-04: 创建会话compaction检查机制
 - 2026-04-04: Git push成功（28335a0）
+- 2026-04-04 13:35: Git push失败（connection reset），待网络恢复后重试
 
 ## Pending Reviews
 - [ ] Verify daily learning cron executes at 08:00
 - [ ] Verify daily summary cron executes at 21:00
 - [ ] Review corrections.md for 3x pattern promotion
+- [ ] ⚠️ Git push 失败（connection reset），待网络恢复
 
 ## Patterns to Watch
 - "汇报必须验证" - used 2x, needs 1 more to promote to HOT
