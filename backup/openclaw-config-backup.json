@@ -1,0 +1,236 @@
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "qclaw/modelroute"
+      },
+      "workspace": "~/.openclaw/workspace",
+      "maxConcurrent": 3,
+      "timeoutSeconds": 72000
+    }
+  },
+  "skills": {
+    "load": {
+      "extraDirs": []
+    },
+    "entries": {
+      "skill-creator": {
+        "enabled": false
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "qclaw": {
+        "baseUrl": "${QCLAW_LLM_BASE_URL}",
+        "apiKey": "${QCLAW_LLM_API_KEY}",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "modelroute",
+            "name": "modelroute"
+          }
+        ]
+      }
+    }
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "enabled": true
+      }
+    }
+  },
+  "browser": {
+    "enabled": true,
+    "defaultProfile": "openclaw",
+    "ssrfPolicy": {
+      "dangerouslyAllowPrivateNetwork": false
+    }
+  },
+  "gateway": {
+    "port": 28789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": ""
+    },
+    "controlUi": {
+      "allowedOrigins": [
+        "null"
+      ]
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "http": {
+      "endpoints": {
+        "chatCompletions": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "channels": {
+    "wechat-access": {
+      "enabled": true,
+      "token": "",
+      "wsUrl": "${QCLAW_WECHAT_WS_URL}",
+      "guid": "${QCLAW_USER_GUID}",
+      "userId": "${QCLAW_USER_ID}"
+    },
+    "qqbot": {
+      "enabled": false,
+      "allowFrom": [
+        "*"
+      ],
+      "appId": "${QCLAW_QQBOT_APP_ID}",
+      "clientSecret": "${QCLAW_QQBOT_CLIENT_SECRET}"
+    },
+    "yuanbao": {
+      "enabled": false,
+      "allowFrom": [
+        "*"
+      ],
+      "appKey": "${QCLAW_YUANBAO_APP_KEY}",
+      "appSecret": "${QCLAW_YUANBAO_APP_SECRET}"
+    },
+    "feishu": {
+      "enabled": false,
+      "allowFrom": [
+        "*"
+      ],
+      "dmPolicy": "open",
+      "appId": "${QCLAW_FEISHU_APP_ID}",
+      "appSecret": "${QCLAW_FEISHU_APP_SECRET}"
+    },
+    "dingtalk-connector": {
+      "enabled": false,
+      "allowFrom": [
+        "*"
+      ],
+      "clientId": "${QCLAW_DINGTALK_CLIENT_ID}",
+      "clientSecret": "${QCLAW_DINGTALK_CLIENT_SECRET}"
+    },
+    "wecom": {
+      "enabled": false,
+      "allowFrom": [
+        "*"
+      ],
+      "botId": "${QCLAW_WECOM_BOT_ID}",
+      "secret": "${QCLAW_WECOM_SECRET}"
+    },
+    "openclaw-weixin": {
+      "enabled": false
+    }
+  },
+  "plugins": {
+    "enabled": true,
+    "allow": [
+      "wechat-access",
+      "qclaw-plugin",
+      "openclaw-qqbot",
+      "openclaw-plugin-yuanbao",
+      "feishu",
+      "dingtalk-connector",
+      "wecom-openclaw-plugin",
+      "openclaw-weixin",
+      "skill-interceptor",
+      "queue-guard"
+    ],
+    "slots": {},
+    "load": {
+      "paths": []
+    },
+    "entries": {
+      "wechat-access": {
+        "enabled": true
+      },
+      "qclaw-plugin": {
+        "enabled": true,
+        "config": {}
+      },
+      "openclaw-qqbot": {
+        "enabled": false,
+        "config": {}
+      },
+      "openclaw-plugin-yuanbao": {
+        "enabled": false,
+        "config": {}
+      },
+      "feishu": {
+        "enabled": false,
+        "config": {}
+      },
+      "dingtalk-connector": {
+        "enabled": false,
+        "config": {}
+      },
+      "wecom-openclaw-plugin": {
+        "enabled": false,
+        "config": {}
+      },
+      "openclaw-weixin": {
+        "enabled": false,
+        "config": {}
+      },
+      "skill-interceptor": {
+        "enabled": true,
+        "config": {
+          "blockedSkills": [
+            "tencent-docs",
+            "tencent-survey",
+            "notion",
+            "163-email-skill",
+            "qq-email-skill",
+            "tencent-meeting",
+            "tencent-meeting-mcp",
+            "ima"
+          ],
+          "credentialHostedSkills": {
+            "notion": "notion",
+            "163-email-skill": "163_mail",
+            "qq-email-skill": "qq_mail",
+            "tencent-meeting": "tencent_meeting",
+            "tencent-meeting-mcp": "tencent_meeting",
+            "ima": "ima"
+          },
+          "manualCodeSkills": [
+            "163-email-skill",
+            "qq-email-skill",
+            "tencent-meeting",
+            "tencent-meeting-mcp",
+            "ima"
+          ],
+          "blockMessage": "该 Skill 已被安全策略拦截，禁止加载",
+          "logOnly": false
+        }
+      },
+      "queue-guard": {
+        "enabled": true,
+        "config": {}
+      }
+    }
+  },
+  "messages": {
+    "queue": {
+      "mode": "followup"
+    }
+  },
+  "session": {
+    "reset": {
+      "mode": "idle",
+      "idleMinutes": 525600
+    },
+    "maintenance": {
+      "pruneAfter": "365d",
+      "maxEntries": 1000000,
+      "resetArchiveRetention": false,
+      "rotateBytes": "1gb"
+    },
+    "dmScope": "per-channel-peer"
+  }
+}
