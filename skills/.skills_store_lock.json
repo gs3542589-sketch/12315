@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "coding": {
+      "name": "Coding",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=coding",
+      "source": "skillhub",
+      "version": "1.0.3"
+    },
+    "claude-code": {
+      "name": "Claude Code Integration",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=claude-code",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "context7-docs": {
+      "name": "Context7 Documentation Skill",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=context7-docs",
+      "source": "skillhub",
+      "version": "1.0.0"
+    }
+  }
+}
