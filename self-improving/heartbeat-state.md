@@ -1,12 +1,12 @@
 # self-improving/heartbeat-state.md
 
 ## Heartbeat State
-Last heartbeat run: 2026-04-04T16:02:00+08:00
-⚠️ QMD索引cron存在严重问题：连续失败6次，详见下方根因分析
+Last heartbeat run: 2026-04-04T19:28:00+08:00
+⚠️ QMD索引cron存在严重问题：连续失败7次，详见下方根因分析
 
 ## QMD Index Status
 - Last QMD rebuild: 2026-04-04T13:44:00+08:00 ⚠️ (手动记录，此后连续失败)
-- Status: 🔴 **连续失败6次** - qmd命令不可用
+- Status: 🔴 **连续失败7次** - qmd命令不可用
 - 错误原因: Windows环境下qmd CLI缺失（`/bin/sh` not found）
 - 已执行操作: 记录状态，不再重复尝试
 - 下一步: 需要安装qmd CLI或使用替代方案
@@ -27,7 +27,10 @@ Last heartbeat run: 2026-04-04T16:02:00+08:00
 - 2026-04-04: Git push成功（28335a0）
 - 2026-04-04 13:35: Git push失败（connection reset），待网络恢复后重试
 - 2026-04-04 13:44: Git push成功（27e2277）✅
-- 2026-04-04 16:02: QMD索引cron检查 - 发现连续6次失败，qmd CLI不可用⚠️
+- 2026-04-04 17:03: QMD索引cron检查 - 连续失败7次，维持已知问题状态⚠️
+- 2026-04-04 19:28: QMD索引cron检查 - 连续失败9次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
+- 2026-04-04 21:29: QMD索引cron检查 - 连续失败10次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
+- 2026-04-04 22:29: QMD索引cron检查 - 连续失败11次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
 
 ## Pending Reviews
 - [ ] Verify daily learning cron executes at 08:00
