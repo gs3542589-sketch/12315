@@ -28,6 +28,7 @@
 
 ### 高频核心技能速查
 - seedance-shot-design：导演式分镜技能，6场景模板，validate_prompt.js校验，万能公式（主体+动作+场景+光线+镜头+风格+画质+约束）
+- ai-novel-writer：雪花写作法10步创作流程，15000字短篇小说引导，每步确认后推进，含人物/场景/大纲工具
 - prompt-optimizer：58种提示词优化技术，list/get/optimize三命令
 - creative-toolkit：5引擎图像路由（Nanobanana2/Seedream5/GPTImage/Midjourney/ComfyUI），1300+预设风格
 - capability-evolver：运行时自进化，协议约束改进，需A2A_NODE_ID
