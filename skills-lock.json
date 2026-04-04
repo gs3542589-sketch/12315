@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "computer-vision-opencv": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "computedHash": "18c248ee75adf4ebffb009c3d98b374629d6c7b9abafd31ab5f01e3c5d812981"
+    },
+    "image-ocr": {
+      "source": "fearovex/claude-config",
+      "sourceType": "github",
+      "computedHash": "b6d11818afcad4e114cd5816da05127dc5f6b9bf0a42a940d7b64ed87591b564"
+    }
+  }
+}
