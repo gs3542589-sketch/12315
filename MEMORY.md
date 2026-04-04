@@ -31,6 +31,7 @@
 - ai-novel-writer：雪花写作法10步创作流程，15000字短篇小说引导，每步确认后推进，含人物/场景/大纲工具
 - viral-video-script：爆款短视频脚本技能，5大文案结构（PREP/对比/FIRE/RIDE/强化IP），分镜头脚本表格输出
 - xhs-post-scheduler：小红书爆款发布时间安排，3步流程（收集赛道→生成时间表→生成文案），覆盖早/午/晚/睡前4时段
+- xhs-comment-designer：评论区金句引导回复，3步流程，10个金句输出，5大人性公式（共情+提问/赞美+引导/激励+行动等）
 - prompt-optimizer：58种提示词优化技术，list/get/optimize三命令
 - creative-toolkit：5引擎图像路由（Nanobanana2/Seedream5/GPTImage/Midjourney/ComfyUI），1300+预设风格
 - capability-evolver：运行时自进化，协议约束改进，需A2A_NODE_ID
