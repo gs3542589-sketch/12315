@@ -2,13 +2,20 @@
 
 ## Heartbeat State
 Last heartbeat run: 2026-04-04T05:14:00+08:00
+Last heartbeat run (this cycle): 2026-04-04T13:25:00+08:00
 Last review: 2026-04-04T05:14:00+08:00
+
+## QMD Index Status
+- Last QMD rebuild: 2026-04-04T13:25:48+08:00 ✅
+- QMD files verified: 2 index files updated
+- Status: Running normally (5-min cron active)
 
 ## Maintenance Log
 - 2026-04-04: Created self-improving directory structure
 - 2026-04-04: Set up corrections.md with all historical corrections
 - 2026-04-04: Set up memory.md (HOT) with confirmed patterns
 - 2026-04-04: Registered 3 cron tasks (backup, daily learning, daily summary)
+- 2026-04-04 13:25: ✅ QMD index rebuild verified (2 files, running normally)
 
 ## Action Notes
 - self-improving skill installed but never set up (2026-04-02)
