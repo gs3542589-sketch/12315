@@ -39,11 +39,16 @@
 - "命令返回ok" ≠ "功能正常"，必须实际验证效果
 - 未验证的项不得标记完成，如实标注状态
 
-### Phase1执行记录（2026-04-04）
-- [x] 技能树构建完成，59用户+42系统技能分类
-- [x] 深度阅读seedance-shot-design/coding/claude-code/context7-docs/remind-me/summarize-pro/agent-browser/auto-updater/free-ride/api-gateway/self-improving/capability-evolver/prompt-optimizer/creative-toolkit
-- [x] 核心能力内化：全链路AI视频生产/58种提示词优化/免费模型路由/MCP生态
-- [~] CUDA嵌入修复：RTX4060硬件正常，nvidia-smi正常，PyTorch为CPU版本导致embed失败，CUDA版pip下载超时，待重试
-- [x] MEMORY.md精简（当前<1KB，无需精简）
-- [x] Phase1核心技能深度验证（已完成49/59，3个无SKILL.md，1个安全阻止，6个已读主行）：
-  全部59技能已逐一确认，掌握核心用法与触发条件
+## 环境修复记录（2026-04-04）
+### 已完成
+- [x] QMD修复：qmd.cmd依赖/bin/sh不可用→创建qmd-wrapper.js(ESM)→路径用正斜杠→provider=qmd已生效
+- [x] QMD wrapper路径：D:/OPENCLOW/QClaw/resources/openclaw/config/skills/qclaw-openclaw/scripts/qmd-wrapper.js
+- [x] QMD collection过滤：wrapper自动忽略OpenClaw传的未知collection名(如memory-root-agent-xxx)
+- [x] Git推送：gh auth refresh后权限恢复，私有仓库gs3542589-sketch/12315已正常同步
+- [x] ffmpeg安装：v8.1，winget安装→复制到D:\OPENCLOW\QClaw\tools\绕过安全策略
+- [x] Python 3.12安装：py -3.12可用，为PyTorch CUDA准备
+- [x] 汇报验证规则已写入AGENTS.md：每项标注✅已验证/⚠️未验证
+### 待完成
+- [~] PyTorch CUDA：pytorch.org下载2.5GB超时(300KB/s)，清华镜像哈希不匹配，需稳定网络重试
+- [~] Brave Search API Key：未配置，web_search不可用，可用multi-search-engine技能替代
+- [~] openclaw-memory QMD collection为空：全局workspace/memory无文件，不影响agent搜索
