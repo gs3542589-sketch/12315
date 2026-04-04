@@ -1,12 +1,12 @@
 # self-improving/heartbeat-state.md
 
 ## Heartbeat State
-Last heartbeat run: 2026-04-04T13:25:00+08:00
-Last review: 2026-04-04T13:25:00+08:00
+Last heartbeat run: 2026-04-04T13:35:12+08:00
 
 ## QMD Index Status
-- Last QMD rebuild: 2026-04-04T13:25:48+08:00 ✅
-- Status: Running normally (5-min cron active)
+- Last QMD rebuild: 2026-04-04T13:35:12+08:00 ✅
+- Status: ✅ Running normally - 用 `node <qmd.js>` 绕过 bunx shim 问题
+- Note: bunx shim 依赖 /bin/sh，Windows 不兼容；已找到正确调用方式
 
 ## Maintenance Log
 - 2026-04-04: 创建self-improving目录结构
