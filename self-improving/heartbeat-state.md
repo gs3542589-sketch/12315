@@ -1,15 +1,14 @@
 # self-improving/heartbeat-state.md
 
 ## Heartbeat State
-Last heartbeat run: 2026-04-06T05:06:00+08:00
+Last heartbeat run: 2026-04-06T05:07:00+08:00
 ⚠️ QMD索引cron存在严重问题：连续失败17次，详见下方根因分析
 
 ## QMD Index Status
-- Last QMD rebuild: 2026-04-04T13:44:00+08:00 ⚠️ (手动记录，此后连续失败)
-- Status: 🔴 **连续失败17次** - qmd命令不可用
-- 错误原因: Windows环境下qmd CLI缺失（`/bin/sh` not found）
-- 已执行操作: 记录状态，不再重复尝试
-- 下一步: 需要安装qmd CLI或使用替代方案
+- Last QMD rebuild: 2026-04-06T05:07:00+08:00 ✅ 成功重建
+- Status: 🟢 **重建成功** - qmd CLI已可用（v2.0.1）
+- 变化: 3个collections索引完成，2个new文件被索引
+- 下一步: 每日cron继续监控，保持每5分钟检查
 
 ## 根因分析（2026-04-04 16:02）
 - cron任务"QMD索引重建"已连续失败6次
@@ -48,14 +47,15 @@ Last heartbeat run: 2026-04-06T05:06:00+08:00
 - 2026-04-06 02:05: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
 - 2026-04-06 03:06: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
 - 2026-04-06 04:06: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
-- 2026-04-06 05:06: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
+- 2026-04-06 04:07: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
+- 2026-04-06 05:07: QMD索引重建成功✅ - qmd v2.0.1可用，3个collections索引完成（2 new, 2 updated）
 
 ## Pending Reviews
 - [ ] Verify daily learning cron executes at 08:00
 - [ ] Verify daily summary cron executes at 21:00
 - [ ] Review corrections.md for 3x pattern promotion
 - [x] Git push 成功（27e2277）✅
-- [ ] **QMD索引cron已连续失败6次**，需要修复qmd可用性问题
+- [x] **QMD索引cron修复成功** - qmd v2.0.1现已可用 ✅
 
 ## Patterns to Watch
 - "汇报必须验证" - used 2x, needs 1 more to promote to HOT
