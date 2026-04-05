@@ -10,6 +10,11 @@
       "source": "fearovex/claude-config",
       "sourceType": "github",
       "computedHash": "b6d11818afcad4e114cd5816da05127dc5f6b9bf0a42a940d7b64ed87591b564"
+    },
+    "xiaohongshu": {
+      "source": "zhjiang22/openclaw-xhs",
+      "sourceType": "github",
+      "computedHash": "c9dd3d311539d483df91c558a7925dccdd73ad004b7120bf0bc163d8ea5e63e5"
     }
   }
 }
