@@ -1,7 +1,7 @@
 # self-improving/heartbeat-state.md
 
 ## Heartbeat State
-Last heartbeat run: 2026-04-05T23:03:00+08:00
+Last heartbeat run: 2026-04-06T02:05:00+08:00
 ⚠️ QMD索引cron存在严重问题：连续失败17次，详见下方根因分析
 
 ## QMD Index Status
@@ -43,6 +43,9 @@ Last heartbeat run: 2026-04-05T23:03:00+08:00
 - 2026-04-05 13:03: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
 - 2026-04-05 15:03: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
 - 2026-04-05 23:03: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
+- 2026-04-06 00:04: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
+- 2026-04-06 01:05: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
+- 2026-04-06 02:05: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
 
 ## Pending Reviews
 - [ ] Verify daily learning cron executes at 08:00
