@@ -38,6 +38,7 @@ Last heartbeat run: 2026-04-05T08:34:00+08:00
 - 2026-04-05 06:33: QMD索引cron检查 - 连续失败16次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
 - 2026-04-05 07:34: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
 - 2026-04-05 08:34: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
+- 2026-04-05 09:00: QMD索引cron检查 - 连续失败17次，维持已知问题状态⚠️（qmd在Windows下不可用，已知问题）
 
 ## Pending Reviews
 - [ ] Verify daily learning cron executes at 08:00
