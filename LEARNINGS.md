@@ -7,7 +7,14 @@
 
 ---
 
-## 2026-04-05
+## 2026-04-06
+
+### 1. QMD query/vsearch 向量搜索挂起
+- **现象**：`qmd query` 执行时永远停在 "Gathering information" 状态
+- **尝试**：下载3个模型文件到缓存，尝试GPU disable/cuda/vulkan各种模式，清除重装node-llama-cpp
+- **根因**：node-llama-cpp 3.18.1 在加载 reranker/generate 模型时挂起，CUDA 12.8兼容性或底层ggml库问题
+- **临时解决**：使用 `qmd search` 替代（BM25纯文本搜索，功能完整）
+- **状态**：⚠️ 向量搜索未修复，BM25搜索正常
 
 ### 1. QMD CLI 依赖 /bin/sh 导致 Windows 下报错
 - **现象**：`qmd --version` 报错 `/bin/sh not found`

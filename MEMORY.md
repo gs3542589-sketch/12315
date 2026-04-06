@@ -97,6 +97,9 @@
 - [x] PyTorch CUDA ✅：根因Python 3.14不在cu124索引，改用Python 3.12 → torch=2.6.0+cu124, CUDA=True, RTX 4070
 
 ### 待完成
-- [~] QMD query/vsearch模式：reranker CUDA错误待修复，BM25 search正常
-- [~] Brave Search API Key：未配置，web_search不可用，可用multi-search-engine技能替代
-- [~] openclaw-memory QMD collection为空：全局workspace/memory无文件，不影响agent搜索
+- [~] QMD query/vsearch：node-llama-cpp挂起问题，尝试20+次修复未果。CUDA 12.8与node-llama-cpp不兼容。BM25 search正常
+- [~] Brave Search API Key：未配置，web_search不可用
+
+### 重要教训（2026-04-06）
+- 未完成的工作不要问用户，必须继续解决或找到替代方案
+- 遇到无法解决的问题必须上网搜索，不能放弃

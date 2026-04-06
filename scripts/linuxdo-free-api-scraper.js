@@ -26,12 +26,12 @@ async function scrapeFreeAPIPosts(browser) {
   
   // Search across multiple categories
   const searchUrls = [
+    'https://linux.do/c/welfare/36',   // 福利羊毛板块
+    'https://linux.do/c/resource/14',  // 资源荟萃板块
     'https://linux.do/search?q=免费API',
     'https://linux.do/search?q=公益站',
     'https://linux.do/search?q=中转站',
-    'https://linux.do/search?q=免费额度',
-    'https://linux.do/c/福利羊毛/10',  // 福利羊毛板块
-    'https://linux.do/c/资源荟萃/11'   // 资源荟萃板块
+    'https://linux.do/search?q=API+key'
   ];
   
   for (const url of searchUrls) {
@@ -40,21 +40,37 @@ async function scrapeFreeAPIPosts(browser) {
       await page.goto(url, { timeout: 30000, waitUntil: 'domcontentloaded' });
       await page.waitForTimeout(3000);
       
-      // Extract posts
-      const posts = await page.$$eval('.topic-list-item, .search-result-topic', items => {
-        return items.map(item => {
-          const titleEl = item.querySelector('.link-top-line a, .topic-title a, a.title');
-          const excerptEl = item.querySelector('.topic-excerpt, .blurb');
-          const authorEl = item.querySelector('.author a, .username a');
-          
-          return {
-            title: titleEl?.textContent?.trim() || '',
-            url: titleEl?.href || '',
-            excerpt: excerptEl?.textContent?.trim() || '',
-            author: authorEl?.textContent?.trim() || 'Unknown',
-            scrapedAt: new Date().toISOString()
-          };
-        }).filter(p => p.title);
+      // Extract posts - use universal selector for topic links
+      const posts = await page.$$eval('a[href*="/t/topic/"]', items => {
+        // Deduplicate by URL, filter out pagination links
+        const seen = new Set();
+        return items
+          .filter(item => {
+            // Skip if already seen or is pagination link
+            const href = item.href;
+            const text = item.textContent?.trim() || '';
+            if (seen.has(href)) return false;
+            if (!text || text.length < 5) return false;
+            if (href.match(/\/\d+$/) && !href.match(/\/topic\/\d+$/)) return false;
+            // Skip numeric-only titles (page numbers)
+            if (/^\d+$/.test(text)) return false;
+            seen.add(href);
+            return true;
+          })
+          .slice(0, 30)
+          .map(item => {
+            // Try to get parent container for excerpt
+            const parent = item.closest('tr, li, div.topic-list-item, article');
+            const excerptEl = parent?.querySelector('.topic-excerpt, .blurb, .post, .excerpt');
+            
+            return {
+              title: item.textContent?.trim() || '',
+              url: item.href,
+              excerpt: excerptEl?.textContent?.trim() || '',
+              author: 'Unknown',
+              scrapedAt: new Date().toISOString()
+            };
+          });
       });
       
       allPosts.push(...posts);
