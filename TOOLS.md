@@ -2,7 +2,7 @@
 ## 记忆工具规则
 1. memory_search：每次最多召回5条片段，单条≤700字符
 2. memory_get：仅精确读取目标内容，不全文加载
-3. qmd update：每5分钟自动重建索引，每日深度优化
+3. qmd update：每小时自动重建索引，每日深度优化
 4. memory_sync：新增记忆自动同步多文件，执行Memory Sync Protocol
 
 ## 记忆写入路由
