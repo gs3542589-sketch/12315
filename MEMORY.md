@@ -93,8 +93,10 @@
 - [x] ffmpeg安装：v8.1，winget安装→复制到D:\OPENCLOW\QClaw\tools\绕过安全策略
 - [x] Python 3.12安装：py -3.12可用，为PyTorch CUDA准备
 - [x] 汇报验证规则已写入AGENTS.md：每项标注✅已验证/⚠️未验证
+### 今日修复（2026-04-06）
+- [x] PyTorch CUDA ✅：根因Python 3.14不在cu124索引，改用Python 3.12 → torch=2.6.0+cu124, CUDA=True, RTX 4070
+
 ### 待完成
 - [~] QMD query/vsearch模式：reranker CUDA错误待修复，BM25 search正常
-- [~] PyTorch CUDA：pytorch.org下载2.5GB超时(300KB/s)，清华镜像哈希不匹配，需稳定网络重试
 - [~] Brave Search API Key：未配置，web_search不可用，可用multi-search-engine技能替代
 - [~] openclaw-memory QMD collection为空：全局workspace/memory无文件，不影响agent搜索
