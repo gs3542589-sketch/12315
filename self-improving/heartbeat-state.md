@@ -1,14 +1,14 @@
 # self-improving/heartbeat-state.md
 
 ## Heartbeat State
-Last heartbeat run: 2026-04-06T12:40:00+08:00
-🟢 QMD索引正常运行中（本次成功12:40）
+Last heartbeat run: 2026-04-06T13:15:00+08:00
+🟢 QMD索引正常运行中（本次成功12:55）
 
 ## QMD Index Status
-- Last QMD rebuild: 2026-04-06T12:20:00+08:00 ✅ 成功更新（0 new, 2 updated）
+- Last QMD rebuild: 2026-04-06T12:55:00+08:00 ✅ 成功更新（0 new, 0 updated）
 - Status: 🟢 **正常运行** - qmd v2.0.1
-- 本次变化: 无变化，距上次重建15min，无需触发
-- 2个哈希需要embedding，运行'qmd embed'可补充（可选）
+- 本次变化: 无变化，距上次重建10min，无需触发
+- 40文件已索引，2个哈希需要embedding，运行'qmd embed'可补充（可选）
 
 ## 根因分析（2026-04-04 16:02）
 - cron任务"QMD索引重建"已连续失败6次
@@ -74,6 +74,12 @@ Last heartbeat run: 2026-04-06T12:40:00+08:00
 - 2026-04-06 12:35: QMD索引检查成功✅ - qmd v2.0.1可用✅，距上次成功（12:20）约15min，无变化无需重建，维持正常✅
 
 - 2026-04-06 12:40: QMD索引检查成功✅ - qmd v2.0.1可用✅，40文件已索引，2待embedding，距上次成功（12:20）约20min，无变化无需重建，维持正常✅
+- 2026-04-06 12:45: QMD索引检查成功✅ - qmd v2.0.1可用✅，40文件已索引，2待embedding，距上次成功（12:20）约25min，无变化无需重建，维持正常✅
+- 2026-04-06 12:55: QMD索引重建成功✅ - 3 collections，0 new，0 updated，qmd v2.0.1正常，40文件已索引，2待embedding
+- 2026-04-06 13:05: QMD索引检查成功✅ - qmd v2.0.1可用✅，距上次成功（12:55）约10min，无变化无需重建，维持正常✅
+
+- 2026-04-06 13:10: QMD索引检查成功✅ - qmd v2.0.1可用✅，距上次成功（12:55）约15min，无变化无需重建，维持正常✅
+- 2026-04-06 13:15: QMD索引检查成功✅ - qmd v2.0.1可用✅，40文件已索引，2待embedding，距上次成功（12:55）约20min，无变化无需重建，维持正常✅
 
 ## Pending Reviews
 - [ ] Verify daily learning cron executes at 08:00
