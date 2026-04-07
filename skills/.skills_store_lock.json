@@ -18,6 +18,42 @@
       "zip_url": "https://lightmake.site/api/v1/download?slug=context7-docs",
       "source": "skillhub",
       "version": "1.0.0"
+    },
+    "hot": {
+      "name": "热点数据采集",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=hot",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "agent-browser": {
+      "name": "Agent Browser",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=agent-browser",
+      "source": "skillhub",
+      "version": "0.2.0"
+    },
+    "douyin-hot": {
+      "name": "抖音热榜 / Douyin Hot",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=douyin-hot",
+      "source": "skillhub",
+      "version": "1.0.5"
+    },
+    "douyin-search-keyword": {
+      "name": "抖音搜索关键词",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=douyin-search-keyword",
+      "source": "skillhub",
+      "version": "1.0.2"
+    },
+    "douyin-keyword-search": {
+      "name": "douyin-keyword-search",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=douyin-keyword-search",
+      "source": "skillhub",
+      "version": ""
+    },
+    "douyin-hot-trend": {
+      "name": "Douyin Hot Trend",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=douyin-hot-trend",
+      "source": "skillhub",
+      "version": "1.1.0"
     }
   }
 }
