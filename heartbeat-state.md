@@ -1,8 +1,12 @@
-QMD索引重建状态 - 时间: 2026-04-07 20:05 (Asia/Shanghai)
-- Git状态: 需commit heartbeat-state.md
-- QMD更新: ✅ 完成 - 53文件已索引，161向量已embed
-- GPU加速: ✅ Vulkan启用 - RTX 4070, 11.1GB VRAM
-- 修复方法: 安装@node-llama-cpp/win-x64-cuda包 + 设置NODE_LLAMA_CPP_GPU=vulkan
-- QMD CLI路径: C:\Users\Administrator\.bun\install\cache\@tobilu\qmd@2.0.1@@registry.npmmirror.com@@@1\dist\cli\qmd.js
-- qmd-wrapper.js已更新: 添加NODE_LLAMA_CPP_GPU=vulkan环境变量
-- 下次建议: 正常运行，无需特殊操作
+# Heartbeat State
+
+## QMD Index Rebuild Check
+- Time: 2026-04-07 21:03 (Asia/Shanghai)
+- Last git commit: 2026-04-07 19:57:02 +0800 (f91351e)
+- Status: 有变更，已执行QMD重建
+- Changed files: heartbeat-state.md (M), temp/ (??)
+- QMD Result: 3 collections updated (0 new, 3 updated, 50 unchanged, 0 removed)
+
+## Notes
+- heartbeat-state.md 有已跟踪变更，触发QMD重建
+- QMD已更新 workspace, openclaw-memory, workspace-memory 三个集合
