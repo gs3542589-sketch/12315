@@ -28,18 +28,27 @@
 6. 🟣 办公与生产力（42系统内置）：腾讯文档/会议/问卷/PDF/Word/PPT/Excel/邮件/新闻/金融数据/天气
 
 ### 高频核心技能速查
-- seedance-shot-design：导演式分镜技能，6场景模板，validate_prompt.js校验，万能公式（主体+动作+场景+光线+镜头+风格+画质+约束）
-- ai-novel-writer：雪花写作法10步创作流程，15000字短篇小说引导，每步确认后推进，含人物/场景/大纲工具
-- viral-video-script：爆款短视频脚本技能，5大文案结构（PREP/对比/FIRE/RIDE/强化IP），分镜头脚本表格输出
-- xhs-post-scheduler：小红书爆款发布时间安排，3步流程（收集赛道→生成时间表→生成文案），覆盖早/午/晚/睡前4时段
-- xhs-comment-designer：评论区金句引导回复，3步流程，10个金句输出，5大人性公式（共情+提问/赞美+引导/激励+行动等）
-- viral-headline-writer：爆款标题技能，15个公式（XX都可怕/说出来你可能不信/我XX岁/救命/逼自己看完/真心建议/很变态但等），二极管标题法
-- niche-topic-generator：赛道选题助手，4步流程（收集赛道→关键词→选题→优化），含8大赛道关键词库、敏感词规避
-- prompt-optimizer：58种提示词优化技术，list/get/optimize三命令
-- creative-toolkit：5引擎图像路由（Nanobanana2/Seedream5/GPTImage/Midjourney/ComfyUI），1300+预设风格
-- capability-evolver：运行时自进化，协议约束改进，需A2A_NODE_ID
-- summarize-pro：20功能摘要引擎，支持多格式多语言
-- clonev：声音克隆Coqui XTTS v2，6-30秒样本，14+语言
+- seedance-shot-design：导演式分镜技能，6场景模板
+- ai-novel-writer：雪花写作法10步创作流程
+- viral-video-script：爆款短视频脚本，5大文案结构
+- xhs-post-scheduler：小红书发布时间安排
+- xhs-comment-designer：评论区金句引导回复
+- viral-headline-writer：爆款标题15个公式
+- niche-topic-generator：赛道选题助手
+- prompt-optimizer：58种提示词优化技术
+- creative-toolkit：5引擎图像路由（Nanobanana2/Seedream5/GPTImage/Midjourney/ComfyUI）
+- summarize-pro：20功能摘要引擎
+- clonev：声音克隆Coqui XTTS v2
+
+### Seedance 2.0 文档体系（2026-04-07更新）
+| 文档 | 用途 | 大小 |
+|------|------|------|
+| `aigc-lean-sop.md` | 精简SOP日常执行（4阶段12步） | 11KB |
+| `seedance-prompt-formulas.md` | 提示词公式篇 | 4KB |
+| `seedance-camera-movements.md` | 运镜词典篇（48组） | 4KB |
+| `seedance-workflow-sop.md` | 分镜与工作流篇 | 3KB |
+| `seedance-ultimate-dictionary.md` | 终极词典（已拆分为上述4文件） | 26KB→归档 |
+| `memory/archive/` | 冗余文档归档目录 | - |
 
 ## Seedance 2.0 导演式分镜规范（2026-04-04）
 ### 核心原则
