@@ -18,14 +18,21 @@
 - 优先级：Token成本 > 执行效率 > 体验流畅度
 - 禁止行为：记忆臃肿、全量加载、重复写入、低噪音入库
 
-## 技能树（已内化·59个用户安装+42系统内置）
+## 技能树（已内化·59个用户安装+41系统内置）
 ### 六大能力域
 1. 🔴 AIGC内容生产（25技能）：cinematic-script-writer/ai-video-script-automaton/video-script-generator/script-to-storyboard/seedance全系/video-prompting-guide/video-reverse-prompt/creative-toolkit/image-cog/image-vision/image2prompt/music-cog/clonev/openai-tts/ai-subtitle-generator/prompt-optimizer/tcm-video-factory/novel-generator/short-drama-writer/drama-generator/story-cog
 2. 🟠 信息采集与情报（9技能）：deep-research-pro/tavily/baoyu-url-to-markdown/bilibili-hot-monitor/douyin-video-analyst/summarize-pro/rag/data-analyst-pro/structure-thinking
 3. 🟡 浏览器自动化与发布（6技能）：agent-browser/douyin-downloader/yt-video-downloader/social-media-publish
 4. 🟢 系统运维与自进化（10技能）：self-improving/capability-evolver/openclaw-auto-updater/remind-me/free-ride/github/qclaw-openclaw
 5. 🔵 技能开发与工具链（9技能）：skill-creator/mcp-builder/agentic-mcp-server-builder/coding/claude-code/context7-docs/api-gateway
-6. 🟣 办公与生产力（42系统内置）：腾讯文档/会议/问卷/PDF/Word/PPT/Excel/邮件/新闻/金融数据/天气
+6. 🟣 办公与生产力（41系统内置）：腾讯文档/会议/问卷/PDF/Word/PPT/Excel/邮件/新闻/金融数据/天气
+
+### 技能整合记录（2026-04-07）
+| 操作 | 技能 | 原因 | 替代方案 |
+|------|------|------|----------|
+| ❌ 删除 | online-search | 功能被覆盖，需登录 | multi-search-engine（17引擎聚合）|
+| ⚠️ 保留 | weather (builtin) | 简单查询，不可删 | 与 weather-advisor 互补 |
+| ⚠️ 保留 | weather-advisor | 穿衣建议/预警 | 与 weather (builtin) 互补 |
 
 ### 高频核心技能速查
 - seedance-shot-design：导演式分镜技能，6场景模板
