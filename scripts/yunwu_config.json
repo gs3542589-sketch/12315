@@ -1,0 +1,6 @@
+{
+  "api_key": "sk-EasUTnaXh0JzQEqYIbrtnuIfWl2nD28xZPw6QhMx9ykNWwqL",
+  "base_url": "https://api.yunwu.ai/v1",
+  "image_model": "gpt-image-1.5-all",
+  "default_size": "1024x1024"
+}

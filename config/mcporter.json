@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "xhs": {
+      "command": "npx",
+      "args": ["xiaohongshu-mcp", "--headless"]
+    }
+  },
+  "imports": []
+}

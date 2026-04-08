@@ -1,7 +1,44 @@
 # AIGC Prompt Factory - 提示词工厂
 
+## ⚠️ 强制触发规则（最高优先级）
+
+**以下任一条件满足时，必须立即读取本技能完整内容，不得凭记忆生成：**
+
+### 触发词清单（出现任一词即触发）
+```
+提示词、prompt、生图、画图、做图、出图、生成图片、生成视频
+Midjourney、MJ、Stable Diffusion、SD、FLUX、DALL-E、Ideogram
+**Gemini、Imagen、Google image、Gemini生图** ← 用户主力模型
+文生图、文生视频、图生视频、image generation、video generation
+运镜、分镜、光线描写、负面提示词、negative prompt
+画质优化、提示词优化、prompt optimization
+Seedance、可灵、Kling、MiniMax、Hailuo
+```
+
+### 触发场景（出现任一场景即触发）
+- 用户要求生成/优化/写任何图片或视频提示词
+- 用户提到任何图像生成模型名称
+- 用户发送图片并要求生成相似图/变体/提示词
+- 用户要求"帮我写个提示词"、"生成一张图"等
+
+### 执行流程（触发后必须执行）
+1. **先读取本技能完整SKILL.md**（不得跳过）
+2. 应用图片公式或视频公式
+3. 输出英文提示词
+4. 提供2-3个变体版本
+
+---
+
 ## 技能定位
-当用户需要生成**图片提示词**或**视频提示词**时，自动应用本技能内置的优化规则，确保输出质量。
+本技能是**图片/视频提示词生成的唯一权威来源**，内置：
+- 结构化公式（图片+视频）
+- 模型特定技巧（MJ/SD/FLUX/GPT-5/Seedream）
+- 权重控制语法
+- 负面提示词完整模板库
+- 光线描写词典
+- 迭代调试流程
+
+**禁止凭模糊记忆生成提示词，必须读取本技能确保质量。**
 
 ---
 
@@ -27,11 +64,31 @@
 
 ### 1.2 质量增强词库（每次至少选5个）
 
+**核心质量词**：
 ```
-masterpiece, best quality, high quality, 8k, 4k, ultra detailed,
-professional, cinematic lighting, dramatic lighting, soft lighting,
-sharp focus, detailed, intricate, elaborate, beautiful composition,
-dynamic pose, realistic, photographic, concept art, studio quality
+masterpiece, best quality, high quality, 8K, 4K, 2K,
+high resolution, ultra detailed, extremely detailed, hyper-detailed,
+sharp focus, intricate, elaborate, intricate details
+```
+
+**风格增强词**：
+```
+beautiful, stunning, amazing, majestic, incredible,
+professional, studio quality, art station trending,
+cinematic, photorealistic, realistic+++
+```
+
+**光影增强词**：
+```
+cinematic lighting, dramatic lighting, soft lighting,
+good lighting, clear, complementary colors,
+natural light, studio lighting
+```
+
+**组合使用示例**：
+```
+masterpiece, best quality, 8K, ultra detailed, sharp focus,
+cinematic lighting, photorealistic, stunning
 ```
 
 ### 1.3 光线描写模板
@@ -203,9 +260,481 @@ sharp focus, clear details
 
 ---
 
+---
+
+## 七、模型特定技巧（2026最新）
+
+### 7.1 Midjourney V7
+- **短高信号短语**：主体、媒介、情绪，避免长描述
+- **权重语法**：`::` 增强（如 `blue sky::2`）
+- **一致性**：`--oref` 参考图 + `--ow 200-300`
+- **快速迭代**：`--draft` 测试 → 全质量生成
+- **参数**：`--ar` 比例，`--stylize` 创意偏移，`--seed` 固定
+
+### 7.2 Stable Diffusion 3.5 / SDXL
+- **权重语法**：`(term:1.2)` 增强，`[term]` 减弱
+- **负面词**：`--neg blurry, low quality, deformed`
+- **采样器**：DPM++ 2M Karras（推荐）
+- **长描述友好**：支持复杂指令
+
+### 7.3 FLUX
+- **双模式**：关键词式 + 自然语言描述都支持
+- **长提示词**：最多500 tokens
+- **技术细节有效**：相机设置会被理解
+
+### 7.4 ChatGPT (GPT-5 / 4o)
+- **段落式描述**：清晰段落 → 逐步迭代
+- **空间理解强**：复杂场景、文字生成
+- **引用图编辑**：上传图 + 说明保留vs修改
+
+### 7.5 ByteDance Seedream 4.0
+- **简洁优于冗长**：短精准提示词
+- **文字引用**：`"..."` 包裹显示文字
+- **编辑指针**：画箭头/方框指示修改
+
+### 7.6 Google Gemini / Imagen 3（用户主力模型·优先掌握）
+**核心能力**：
+- **角色一致性**：保持人物/角色外观跨多张图片
+- **创意组合**：融合多个概念到单一图像
+- **局部编辑**：精确修改特定部分
+- **风格适配**：应用风格到现有图片
+- **逻辑推理**：理解现实世界关系生成复杂场景
+
+**Gemini提示词公式（6要素法）**：
+```
+Subject（主体具体描述）
++ Composition（构图/镜头角度）
++ Action（动作发生什么）
++ Location（场景地点环境）
++ Style（风格美学）
++ Editing Instructions（编辑指令·可选）
+```
+
+**Gemini专属技巧**：
+1. **角色一致性**：第一个提示词详细定义角色特征，后续提示词引用"same character"
+2. **局部编辑**：直接说"Change X to Y"，如"change the sofa's color to navy blue"
+3. **概念融合**：生成两张图 → 上传合并 → 描述融合场景
+4. **风格转移**：先生成图片 → 再说"Apply style of X to this image"
+5. **逻辑推理**：描述场景 → 问"what would happen if..."
+
+**Gemini提示词示例**：
+```
+# 基础生成
+A whimsical illustration of a tiny, glowing mushroom sprite.
+The sprite has a large, bioluminescent mushroom cap for a hat,
+wide, curious eyes, and a body made of woven vines.
+
+# 角色一致性（后续对话）
+Now, show the same sprite riding on the back of a friendly,
+moss-covered snail through a sunny meadow full of colorful wildflowers.
+
+# 局部编辑
+Change the sofa's color to a deep navy blue.
+Now, add a stack of three books to the coffee table.
+
+# 风格转移
+Apply the style of an architectural drawing to this image.
+```
+
+**Gemini当前限制**：
+- 风格化可能不一致
+- 文字渲染可能出错
+- 角色一致性不是100%可靠
+- 宽高比控制有困难
+
+---
+
+## 八、权重控制语法详解
+
+### 8.1 Midjourney 权重
+```
+blue sky::2        # 权重2倍
+blue sky::0.5      # 权重减半
+sky::-1           # 负权重（排除）
+```
+
+### 8.2 Stable Diffusion 权重
+```
+(cyberpunk city:1.3)    # 增强1.3倍
+[distant mountains:0.8] # 减弱到0.8
+((epic landscape))      # 双括号=强增强
+```
+
+### 8.3 权重规则
+- 默认权重 = 1.0
+- 增强范围：1.1 - 2.0（过高可能降质量）
+- 减弱范围：0.1 - 0.9
+- **位置影响**：靠前的词权重自动更高
+
+---
+
+## 九、负面提示词完整模板库
+
+### 9.1 通用质量负面
+```
+blurry, low resolution, pixelated, grainy, distorted,
+noise, compression artifacts, jpeg artifacts, glitches,
+watermark, text, logo, signature, copyright
+```
+
+### 9.2 风格排除
+```
+# 写实图时
+cartoon, anime, illustration, painting, sketch, watercolor
+
+# 现代风格时
+vintage, retro, grunge, aged, weathered
+
+# 自然光时
+oversaturated, neon, fluorescent, harsh lighting
+```
+
+### 9.3 人体/解剖负面（关键！）
+```
+distorted face, asymmetric eyes, strange mouth, disfigured,
+extra limbs, missing fingers, elongated neck, deformed hands,
+bad anatomy, poorly drawn face, blurry eyes
+```
+
+### 9.4 背景/环境负面
+```
+cluttered background, busy, distracting elements,
+multiple objects, messy, chaotic, excessive detail
+```
+
+### 9.5 避免"AI感"
+```
+artificial, computer-generated, synthetic, plastic,
+uncanny valley, overly smooth, fake, robotic, AI sheen
+```
+
+---
+
+## 十、光线描写进阶词典
+
+### 10.1 光线类型完整表
+| 类型 | 英文描述 | 效果 | 适用场景 |
+|------|---------|------|---------|
+| 正面光 | soft frontal lighting | 均匀无阴影 | 肖像/产品 |
+| 侧光 | dramatic side lighting | 戏剧感立体 | 电影/角色 |
+| 逆光 | backlit, rim light | 边缘光剪影 | 情绪氛围 |
+| 顶光 | overhead, golden hour | 自然温暖 | 户外/风景 |
+| 戏剧光 | cinematic, volumetric rays | 电影感氛围 | 剧情内容 |
+| 霓虹光 | neon, cyberpunk glow | 科幻赛博 | 科幻题材 |
+| 暗调 | dark moody, chiaroscuro | 低调神秘 | 悬疑/严肃 |
+| 斑驳光 | dappled sunlight | 自然斑驳 | 森林/户外 |
+
+### 10.2 光线描写公式
+```
+[光线类型] + [色温/颜色] + [强度] + [氛围]
+示例："dappled sunlight, warm golden hues, soft intensity, serene atmosphere"
+```
+
+### 10.3 专业光线配置模板（可直接粘贴）
+
+**Softbox光线（肖像/产品）**：
+```
+lighting: large softbox key light at 45 degrees, soft wrap, subtle fill, clean shadow edges
+lighting: soft diffused studio lighting, even exposure, gentle highlights, minimal harsh shadows
+```
+
+**Rim Light（边缘光）**：
+```
+lighting: rim light from behind, clean edge highlight around hair and shoulders, controlled spill
+lighting: backlight separation, subtle halo rim, low key studio lighting
+```
+
+**Rembrandt光线（戏剧肖像）**：
+```
+lighting: Rembrandt lighting, single key light high and to the side, dramatic contrast, triangle cheek highlight
+lighting: chiaroscuro portrait lighting, deep shadows, soft falloff, warm highlights
+```
+
+**霓虹光线（赛博朋克）**：
+```
+lighting: neon signs casting colored light, magenta and cyan mix, reflective highlights, soft bloom
+lighting: urban neon glow, colored rim light, wet street reflections, cinematic night lighting
+```
+
+---
+
+## 十一、迭代调试流程
+
+### 11.1 逐步迭代法
+1. 先写主体 → 生成看效果
+2. 添加描述词 → 对比改进
+3. 添加风格/光线 → 细化
+4. 添加负面词 → 修正问题
+5. 调整权重 → 精确控制
+
+### 11.2 问题诊断表
+| 问题 | 负面词解决方案 |
+|------|---------------|
+| 手指畸形 | `deformed hands, extra fingers, missing fingers` |
+| 面部失真 | `distorted face, asymmetric features, disfigured` |
+| 背景杂乱 | `cluttered background, distracting elements` |
+| 色彩过艳 | `oversaturated, neon, fluorescent` |
+| AI感太强 | `artificial, synthetic, plastic texture` |
+| 模糊噪点 | `blurry, low resolution, pixelated, grainy` |
+
+---
+
+## 十四、专业构图技巧（42种构图法）
+
+### 14.1 构图公式
+```
+构图技巧 + 主体位置 + 镜头/角度 + 辅助元素
+```
+
+### 14.2 构图技巧速查
+
+| 技巧 | 效果 | 适用场景 |
+|------|------|---------|
+| Golden Ratio | 自然美感平衡 | 风景/肖像/自然 |
+| Rule of Thirds | 专业平衡 | 通用摄影/营销 |
+| Symmetry | 秩序/完美 | 建筑/Wes Anderson风 |
+| Negative Space | 隔离/极简 | 产品/艺术/孤独感 |
+| Fill the Frame | 强度/细节 | 微距/野生动物/戏剧肖像 |
+| Leading Lines | 引导视线 | 风景/建筑/道路 |
+| Diagonal Lines | 能量/动感 | 动作场景/荷兰角 |
+| Golden Triangle | 动态张力 | 运动/动作/动态肖像 |
+| Center Eye Dominance | 直接连接 | 角色肖像/眼神接触 |
+| Asymmetry | 自然有机 | 自然场景/编辑内容 |
+| Rule of Odds | 动态愉悦 | 产品/静物/团体肖像 |
+| Rule of Space | 呼吸空间 | 肖像/动作/运动 |
+| Framing Within Frame | 深度创造 | 建筑/故事/窥视视角 |
+
+### 14.3 构图提示词模板
+```
+# 黄金分割
+golden ratio composition, Fibonacci spiral flow, aesthetic balance
+
+# 三分法
+rule of thirds composition, subject positioned at intersection point
+
+# 对称构图
+perfectly symmetrical shot, centered composition, mirror image balance
+
+# 负空间
+vast negative space, minimalism, sense of isolation, high contrast
+
+# 引导线
+leading lines pointing to subject, vanishing point, moody atmosphere
+
+# 框架构图
+framing within a frame, depth of field, cinematic storytelling
+```
+
+---
+
+## 十五、相机语言完全指南
+
+### 15.1 相机参数公式
+```
+Subject + Shot + Lens + Focus + Quality
+```
+
+### 15.2 镜头与景深配置
+
+**人像镜头**：
+```
+camera: 85mm portrait lens, shallow depth of field, soft bokeh, sharp eyes
+camera: 50mm lens, natural perspective, shallow DOF, creamy bokeh
+```
+
+**产品/静物**：
+```
+camera: 50mm lens, f/8 look, sharp details, minimal blur
+camera: 100mm macro lens, extreme detail, crisp edges
+```
+
+**电影场景**：
+```
+camera: 35mm lens, moderate depth of field, cinematic framing
+camera: 24mm wide-angle, strong perspective, foreground emphasis
+```
+
+### 15.3 景深与焦点
+```
+sharp focus on eyes, soft background
+tack sharp product edges, crisp details
+realistic skin texture, no plastic smoothing
+shallow depth of field, bokeh background
+deep focus, everything sharp front to back
+```
+
+### 15.4 相机设置提示词模板
+```
+# 肖像
+[subject], camera: 85mm portrait lens, shallow depth of field, sharp eyes, soft bokeh
+
+# 产品
+[product], camera: 50mm lens, f/8 look, studio sharpness, crisp edges
+
+# 电影感
+[scene], camera: 35mm lens, moderate depth of field, cinematic framing, natural perspective
+
+# 超戏剧
+[subject], camera: 24mm wide-angle, strong perspective, dramatic foreground emphasis
+```
+
+---
+
+## 十六、迭代调试流程（高级）
+
+### 16.1 问题→快速修复对照表
+
+| 问题 | 第一步修复 | 第二步修复 |
+|------|----------|----------|
+| 图片太平/单调 | 增加对比/低key光线 | 添加边缘光分离 |
+| 光线太刺眼 | 添加漫射/柔光布 | 关键光抬高放远 |
+| 灰暗/浑浊 | 指定清晰高光 | 添加色彩温度 |
+| 方向随机 | 明确单关键光方向 | 只用一个补光 |
+| 手部畸形 | 负面词强化 | 强调手部细节 |
+| 面部失真 | 负面词+权重调整 | 参考图辅助 |
+
+### 16.2 快速修复提示词
+```
+# 太平
+increase contrast, deeper shadows, reduce fill, add subtle rim light separation
+
+# 太刺眼
+soft diffused lighting, gentle falloff, soft wrap, no harsh shadows
+
+# 太灰暗
+clean highlights, deeper blacks, crisp separation, minimal haze, natural contrast
+
+# 方向混乱
+single key light from camera-left at 45 degrees, minimal fill, consistent shadow direction
+```
+
+---
+
+## 十七、综合模板库
+
+### 17.1 电影肖像
+```
+A [description] portrait of [subject], [lighting setup],
+camera: [lens], [depth of field], [focus],
+[composition], [mood], [color palette],
+[quality boosters], [constraints]
+
+示例：
+A cinematic portrait of a warrior with weathered armor, dramatic side lighting,
+camera: 35mm lens, moderate depth of field, sharp facial detail,
+golden triangle composition, intense mood, desaturated color grade,
+masterpiece, best quality, 8K, sharp focus, no watermark
+```
+
+### 17.2 产品摄影
+```
+[product] on [surface], professional product photography,
+camera: 50mm lens, f/8 look, studio sharpness,
+[lighting setup], clean minimal background,
+commercial quality, 4K, product-focused composition
+--neg cluttered background, reflections, watermark, text, low quality
+```
+
+### 17.3 氛围场景
+```
+[location] at [time of day], [weather], [atmosphere],
+[lighting description], [color palette],
+wide establishing shot, [composition],
+cinematic color grade, ultra detailed, 8K
+```
+
+### 17.4 角色设计
+```
+[character type] character design, official art style,
+[physical description], [clothing/armor details],
+[pose], [expression],
+[style reference], [lighting],
+game concept art, ArtStation trending, masterpiece
+--neg blurry, low quality, deformed, extra limbs, watermark, cartoon
+```
+
+---
+
+## 十二、高质量提示词模板库
+
+### 12.1 写实肖像
+```
+(masterpiece, best quality), professional portrait of [subject],
+natural lighting, soft rim light, detailed skin texture,
+8K resolution, photorealistic, DSLR quality, 85mm lens,
+shallow depth of field, warm color palette
+--neg blurry, low quality, distorted face, deformed hands,
+cartoon, anime, illustration, watermark, oversaturated
+```
+
+### 12.2 产品摄影
+```
+(masterpiece, best quality), [product] on clean surface,
+studio lighting, soft shadows, professional product photography,
+high detail, 4K, commercial quality, minimal composition
+--neg shadows, reflections, watermark, text, cluttered background,
+low quality, busy, distracting elements
+```
+
+### 12.3 赛博朋克场景
+```
+(masterpiece, best quality), (cyberpunk city:1.3),
+neon-lit streets, holographic billboards, flying cars,
+volumetric lighting, rain reflections, dramatic atmosphere,
+futuristic architecture, blade runner aesthetic
+--neg blurry, low quality, cartoon, anime, oversaturated,
+watermark, text, signature
+```
+
+### 12.4 游戏角色
+```
+(masterpiece, best quality), game character artwork,
+official art style, detailed character design, [description],
+dynamic pose, intricate armor/clothing, concept art quality,
+ArtStation trending, Unreal Engine render style
+--neg blurry, low quality, deformed, extra limbs, watermark,
+text, signature, distorted face
+```
+
+---
+
+## 十三、工具与资源
+
+### 13.1 提示词生成器
+| 工具 | 地址 | 特点 |
+|------|------|------|
+| AI灵创提词器 | frozenland.cc/teleprompter | 免费、中文→英文 |
+| OPS提示词工具 | moonvy.com/apps/ops | 可视化分类 |
+| LetsEnhance | letsenhance.io | 生成+放大一体化 |
+
+### 13.2 社区资源
+- Reddit: r/midjourney, r/StableDiffusion
+- Civitai 模型社区
+- HuggingFace 模型库
+- ArtStation 参考图
+
+---
+
+## 研究来源（2026-04-08）
+
+1. **LetsEnhance**: "How to write AI image prompts like a pro [2026]" - 模型特定技巧、提示词长度策略
+2. **Portkey**: "Prompt Engineering for Stable Diffusion" - 权重语法、负面提示词
+3. **LTX Studio**: 
+   - "Negative Prompts: What They Are & How To Use Them"
+   - "AI Art Prompts: Examples & Prompt Guide" - 构图/光线/风格完整指南
+4. **Google官方**: "Tips for getting the best image generation in the Gemini app" - Gemini/Imagen 3官方技巧
+5. **Atlabs AI**: "42 Cinematic AI Prompts to Master Composition" - 专业构图技巧
+6. **QuestStudio**: "Camera + Lighting Prompt Cheatsheet" - 相机+光线配置模板
+7. **Learn Prompting**: "Quality Boosters" - 质量增强词库
+8. **知乎**: Midjourney提示词工具推荐
+
+---
+
 ## 版本记录
 
 | 日期 | 版本 | 更新内容 |
 |------|------|---------|
 | 2026-04-08 | v1.0 | 初版创建，整合图片/视频/抖音/B站提示词公式 |
+| 2026-04-08 | v2.0 | 整合Tavily搜索：模型特定技巧、权重语法、负面词库、光线词典 |
+| 2026-04-08 | v3.0 | 添加Gemini/Imagen 3官方技巧（6要素公式+5大能力）、42种构图技巧、相机语言完全指南、专业光线配置模板、综合模板库 |
 

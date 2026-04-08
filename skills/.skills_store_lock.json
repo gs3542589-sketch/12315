@@ -54,6 +54,12 @@
       "zip_url": "https://lightmake.site/api/v1/download?slug=douyin-hot-trend",
       "source": "skillhub",
       "version": "1.1.0"
+    },
+    "openclaw-tavily-search": {
+      "name": "Tavily 搜索",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=openclaw-tavily-search",
+      "source": "skillhub",
+      "version": "0.1.0"
     }
   }
 }

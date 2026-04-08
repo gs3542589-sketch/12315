@@ -48,6 +48,20 @@
 - clonev：声音克隆Coqui XTTS v2
 - **aigc-prompt-factory（2026-04-08新建）**：图片/视频提示词优化工厂，内置公式+质量词库+负面提示词
 
+### ⚠️ 技能强制触发铁律（2026-04-08）
+**以下关键词出现时，必须立即读取对应技能SKILL.md，禁止凭记忆生成：**
+| 触发词 | 强制读取技能 |
+|--------|-------------|
+| 提示词、prompt、生图、画图、MJ、SD、FLUX | `aigc-prompt-factory` |
+| 分镜、运镜、镜头语言、视频脚本 | `seedance-shot-design` |
+| 短视频脚本、抖音脚本、爆款文案 | `viral-video-script` |
+| 爆款标题、标题公式 | `viral-headline-writer` |
+| 小红书发布、发布时间 | `xhs-post-scheduler` |
+| 小说写作、章节创作 | `ai-novel-writer` |
+| 声音克隆、克隆声音 | `clonev` |
+
+**触发后执行流程：读取SKILL.md → 应用公式 → 输出结果 → 提供变体**
+
 ### Seedance 2.0 文档体系（2026-04-07更新）
 | 文档 | 用途 | 大小 |
 |------|------|------|
@@ -108,7 +122,8 @@
 - **提示词质量决定图片质量**：结构化公式+光线描写+负面约束缺一不可（2026-04-08）
 
 ## 用户当前工作流（2026-04-08更新）
-- 主力模型：MiniMax M2.7（hytriu/MiniMax-M2.7-highspeed）
+- **主力生图模型：Gemini（Google Imagen）** ← 日常使用
+- 主力对话模型：MiniMax M2.7（hytriu/MiniMax-M2.7-highspeed）
 - 内容平台：抖音 + B站
 - 关注模型：Qwen2.5-14B本地部署（RTX 4070 12GB可跑INT4量化版）
 - 当前痛点：提示词生成图片质量差 → 已创建aigc-prompt-factory技能解决
@@ -140,9 +155,22 @@
 - 违规处罚：立即停止并告知用户
 
 **已安装API：**
-- TAVILY_API_KEY（tvly-dev-3Qw7Ce...）：搜索/采集，无限制
+- TAVILY_API_KEY（tvly-dev-3Qw7Ce...）：**搜索/采集，无限制（免费）✅**
 - YUNWU_IMAGE_KEY（sk-EasUTnaX...）：仅生图
 - YUNWU_VISION_KEY（sk-VHBxt0yX...）：仅识图
+
+### 搜索工具说明（2026-04-08·更新）
+| 工具 | 类型 | 状态 |
+|------|------|------|
+| **Tavily Search** | 免费搜索API | ✅ 主用 |
+| ~~Brave Search~~ | ~~收费~~ | ❌ 已禁用/删除 |
+| multi-search-engine | 无需API | ✅ 备选（17引擎聚合）|
+| web_fetch | 网页抓取 | ✅ 备用 |
+
+**执行搜索任务时：**
+1. 优先使用 Tavily Search（`python .../tavily_search.py --query "..."`）
+2. 设置编码：`$env:PYTHONIOENCODING='utf-8'`
+3. Tavily不可用时，使用 multi-search-engine（web_fetch）
 
 ### 重要教训（2026-04-06）
 - 未完成的工作不要问用户，必须继续解决或找到替代方案
