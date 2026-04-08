@@ -3,48 +3,87 @@
 ## 记录规则
 - 每次错误后立即记录
 - 包含：错误现象、根因、解决方案
-- 避免重复踩坑
 
----
+## 2026-04-08 QMD query/vsearch 修复（node-llama-cpp + Qwen3 兼容性问题）
 
-## 2026-04-06
+### 问题
+- `qmd query` 和 `qmd vsearch` 执行时均挂起
+- 症状：在 "Expanding query..." 或 "Gathering information" 阶段无限等待，exit code 1
+- 受影响模型：Qwen3-Reranker-0.6B-Q8_0（0.60 GB）+ qmd-query-expansion-1.7B-q4_k_m（1.19 GB）
+- 未受影响模型：embeddinggemma-300M-Q8_0（0.31 GB）— GPU 加速正常，1秒完成
+- 尝试过的 GPU 模式：vulkan（挂）、cuda（挂）、cpu（也挂）
+- 根因：node-llama-cpp 3.18.1 与 Qwen3 架构 GGUF 模型推理不兼容（所有规模均挂，显存/CPU 均非根因）
+- node-llama-cpp 最新版本 = 3.18.1，无更高版本可升级
 
-### 1. QMD query/vsearch 向量搜索挂起
-- **现象**：`qmd query` 执行时永远停在 "Gathering information" 状态
-- **尝试**：下载3个模型文件到缓存，尝试GPU disable/cuda/vulkan各种模式，清除重装node-llama-cpp
-- **根因**：node-llama-cpp 3.18.1 在加载 reranker/generate 模型时挂起，CUDA 12.8兼容性或底层ggml库问题
-- **临时解决**：使用 `qmd search` 替代（BM25纯文本搜索，功能完整）
-- **状态**：⚠️ 向量搜索未修复，BM25搜索正常
+### 解决方案（Patch 源码）
 
-### 1. QMD CLI 依赖 /bin/sh 导致 Windows 下报错
-- **现象**：`qmd --version` 报错 `/bin/sh not found`
-- **根因**：qmd 的 npm wrapper 脚本（qmd.cmd/ps1）调用了不存在的 `/bin/sh`
-- **解决**：替换 `C:\Users\Administrator\AppData\Roaming\npm\qmd*` 所有文件，直接调用 `qmd-wrapper.js`
-- **状态**：✅ 已修复
+**文件路径**：`C:\Users\Administrator\.bun\install\cache\@tobilu\qmd@2.0.1@@registry.npmmirror.com@@@1\dist\store.js`
 
-### 2. LiteLLM 部署后模型调用失败
-- **现象**：`litellm_params` 缺少 `custom_llm_provider: openly`
-- **根因**：自定义 API base 需要显式指定 provider
-- **解决**：添加 `custom_llm_provider: openai` 到 litellm_params
-- **状态**：✅ 已修复
+**Patch 1**：强制跳过 reranking（第 2752 行）
+```javascript
+// 修改前：
+const skipRerank = options?.skipRerank ?? false;
+// 修改后：
+const skipRerank = options?.skipRerank ?? true; // Force skip reranking — Qwen3 model hangs during inference on this system
+```
 
-### 3. VPS SSH 连接失败（密码认证被拒绝）
-- **现象**：多次密码 `pcqlJSDM0956` 认证失败
-- **根因**：SSH 端口不是实例 ID，而是标准端口 22
-- **解决**：端口用 22，用户名用 root
-- **状态**：✅ 已修复
+**Patch 2**：强制跳过 expansion（第 2766 行）
+```javascript
+// 修改前：
+const hasStrongSignal = !intent && initialFts.length > 0
+    && topScore >= STRONG_SIGNAL_MIN_SCORE
+    && (topScore - secondScore) >= STRONG_SIGNAL_MIN_GAP;
+// 修改后：
+const hasStrongSignal = true; // Force skip expansion — Qwen3 generator model hangs during inference on this system
+```
 
----
+**Patch 3**：structuredSearch 的 skipRerank 默认值（第 3075 行）
+```javascript
+// 修改前：
+const skipRerank = options?.skipRerank ?? false;
+// 修改后：
+const skipRerank = options?.skipRerank ?? true; // Force skip reranking — Qwen3 model hangs during inference on this system
+```
 
-## 2026-04-07
+### 效果
+- `qmd query` → BM25 + 向量嵌入（GPU 1.5s）+ RRF 融合，**无需 generator/reranker**
+- `qmd search` → 纯 BM25，**不受影响**
+- 质量轻微下降（无 reranking 重排），速度大幅提升（1.5-2s vs 无限挂起）
 
-### 1. Seedance 文档合并优于删除
-- **现象**：用户有7个零散Seedance文档，分散不便查阅
-- **做法**：合并7个文件为1个`seedance-ultimate-dictionary.md`（约13040字，10个Part）
-- **教训**：文档合并比删除更安全——保留全部内容消除重复，合并前先确认无独立价值再删原文件
-- **状态**：✅ 已固化为此后文档整理的标准流程
+### 注意事项
+- Patch 位于 bun 缓存目录，`bun cache clean` 会清除，需重新应用
+- wrapper 已切回 `NODE_LLAMA_CPP_GPU=vulkan`（embed 模型正常）
+﻿
+## 2026-04-08 QMD query/vsearch 修复（node-llama-cpp + Qwen3 兼容性问题）
 
-### 2. 文档整理后同步更新记忆文件
-- **现象**：文档已合并删除，但记忆文件未及时更新状态
-- **教训**：任何文件操作（新建/删除/重命名）后，应立即更新相关记忆条目（含MEMORY.md和当日日志）
-- **状态**：✅ 已执行
+### 问题
+- qmd query 和 qmd vsearch 执行时均挂起，exit code 1
+- 症状：在 "Expanding query..." 或 "Gathering information" 阶段无限等待
+- 受影响模型：Qwen3-Reranker-0.6B（0.60 GB）+ qmd-query-expansion-1.7B（1.19 GB）
+- 未受影响：embeddinggemma-300M（0.31 GB）— GPU 加速正常，1秒完成
+- vulkan/cuda/cpu 全部挂，根因是 node-llama-cpp 3.18.1 与 Qwen3 GGUF 推理不兼容
+- node-llama-cpp 最新版 = 3.18.1，无法升级
+
+### 解决方案（Patch bun 缓存 store.js）
+
+文件：C:\Users\Administrator\.bun\install\cache\@tobilu\qmd@2.0.1@@registry.npmmirror.com@@@1\dist\store.js
+
+**Patch 1（第 2752 行）**：强制 skipRerank 默认 = true
+`javascript
+const skipRerank = options?.skipRerank ?? true;
+`
+
+**Patch 2（第 2766 行）**：强制 hasStrongSignal = true，跳过所有 expansion
+`javascript
+const hasStrongSignal = true;
+`
+
+**Patch 3（第 3075 行）**：structuredSearch 的 skipRerank 默认值
+`javascript
+const skipRerank = options?.skipRerank ?? true;
+`
+
+### 效果
+- qmd query → BM25 + 向量嵌入（GPU 1.5s）+ RRF，无 generator/reranker
+- 质量轻微下降（无 reranking），速度大幅提升（1.5-2s vs 无限挂起）
+- Patch 位于 bun 缓存，un cache clean 后需重新应用
