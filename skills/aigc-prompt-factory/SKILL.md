@@ -29,6 +29,372 @@ Seedance、可灵、Kling、MiniMax、Hailuo
 
 ---
 
+## 零、方法论优先（写提示词的核心思维）
+
+**⚠️ 重要原则：方法论 > 模板积累**
+
+写提示词不是堆砌词藻，而是有结构的思考过程。核心方法：
+
+### 1. KERNEL框架（1000小时Prompt工程总结）
+**6个关键模式决定提示词成功与否：**
+
+| 要素 | 说明 | 效果 |
+|------|------|------|
+| **K - Goal Clarity** | 明确最终效果 | 85%成功率 vs 41% |
+| **E - Examples** | 提供参考图/案例 | 提高一致性 |
+| **R - Role/Constraints** | 指定角色/约束 | 减少随机性 |
+| **N - Narrow Scope** | 限制范围 | 提高聚焦度 |
+| **E - Evaluate** | 评估结果 | 迭代优化 |
+| **L - Learn** | 从结果学习 | 持续改进 |
+
+### 2. 反向工程法（最有效的学习方法）
+```
+图片 → 分析 → 提取提示词 → 学习 → 应用
+```
+- 看到好图时，分析"它好在哪里？用了什么元素？"
+- 提取出能复现的提示词结构
+- 学习优秀的元素组合
+
+### 3. 三要素原则（所有模型通用）
+```
+Subject（主体）+ Context（场景）+ Style（风格）
+```
+无论哪个模型，都逃不开这三个核心要素。
+
+---
+
+## 二、审美能力模块（视觉艺术的元技能）
+
+**审美决定了什么值得生成——没有审美，工具再好也是乱撞。**
+
+### 2.1 视觉艺术四要素
+
+| 要素 | 说明 | 在提示词中的体现 |
+|------|------|-----------------|
+| **构图** | 三分法/黄金比例/引导线/对称 | 镜头语言+构图描述 |
+| **光线** | 明暗/方向/色温 | 光线描写（最影响氛围） |
+| **色彩** | 对比/和谐/情绪 | 色调+配色方案 |
+| **层次** | 前景/中景/背景 | 场景深度描写 |
+
+### 2.2 构图法则（12条核心）
+
+| 法则 | 效果 | 提示词示例 |
+|------|------|-----------|
+| 三分法 | 专业平衡 | `rule of thirds, subject at intersection` |
+| 黄金比例 | 自然美感 | `golden ratio, Fibonacci spiral` |
+| 引导线 | 引导视线 | `leading lines pointing to subject` |
+| 对称 | 秩序/完美 | `symmetrical composition, centered` |
+| 负空间 | 极简/呼吸 | `vast negative space, minimalism` |
+| 框架内框架 | 深度创造 | `framing within frame` |
+| 对角线 | 动感/张力 | `diagonal lines, Dutch angle` |
+| 填满画面 | 强度/细节 | `fill the frame, close-up` |
+| 奇数法则 | 动态愉悦 | `three elements, odd numbers` |
+| 空间法则 | 方向感 | `looking space in front of subject` |
+| 黄金三角 | 戏剧张力 | `golden triangle composition` |
+| 中心眼 | 直接连接 | `center eye dominance, eye contact` |
+
+### 2.3 光线六大类型
+
+| 类型 | 效果 | 提示词示例 |
+|------|------|-----------|
+| 软光 | 柔和/均匀 | `soft diffused light, even exposure` |
+| 硬光 | 戏剧/明暗 | `harsh shadows, high contrast` |
+| 逆光 | 轮廓/剪影 | `backlit, rim light, silhouette` |
+| 侧光 | 立体/戏剧 | `side lighting, Rembrandt` |
+| 顶光 | 自然/温暖 | `overhead light, golden hour` |
+| 霓虹 | 赛博/迷幻 | `neon glow, magenta cyan mix` |
+
+### 2.4 审美分析方法（看图四步法）
+
+看到一张好图时，按以下步骤分析：
+
+```
+1. 【构图】使用了什么构图法则？
+   → 三分法？引导线？对称？
+
+2. 【光线】主光源在哪里？软硬？色温？
+   → 暖色调？冷色调？明暗对比？
+
+3. 【色彩】主色调？对比色？和谐色？
+   → 蓝橙对比？单色调？
+
+4. 【层次】前景/中景/背景如何分布？
+   → 浅景深？深景深？纵深感？
+```
+
+### 2.5 色彩理论体系
+
+**色轮基础**：
+```
+三原色：红、黄、蓝
+三间色：橙、绿、紫
+六复色：红橙、黄绿、蓝绿、蓝紫、紫红、橙黄
+```
+
+**色彩三属性**：
+| 属性 | 说明 | 在提示词中 |
+|------|------|-----------|
+| Hue（色相） | 基本的红/蓝/绿 | "blue hue", "warm tones" |
+| Value（明度） | 颜色的明暗 | "high key", "dark shadows" |
+| Saturation（饱和度） | 颜色的纯度/强度 | "vibrant", "muted", "desaturated" |
+
+**七大配色方案**：
+| 方案 | 说明 | 效果 | 提示词示例 |
+|------|------|------|-----------|
+| Monochromatic | 单色系 | 和谐统一 | "blue monochromatic palette" |
+| Analogous | 相邻色 | 舒适宁静 | "blue-green analogous scheme" |
+| Complementary | 互补色 | 强烈对比 | "blue and orange contrast" |
+| Split Complementary | 分割互补 | 高对比低张力 | "blue with yellow-orange" |
+| Triadic | 三色均分 | 活力平衡 | "red yellow blue triadic" |
+| Square | 四色方形 | 丰富多样 | "red green blue orange" |
+| Tetradic | 双互补 | 富于变化 | "warm and cool balance" |
+
+**色彩心理学**：
+| 色彩 | 情绪 | 适用场景 |
+|------|------|---------|
+| 暖色（红/橙/黄） | 温暖/活力/热情 | 积极/食物/日落 |
+| 冷色（蓝/绿/紫） | 冷静/神秘/科技 | 夜景/科幻/冥想 |
+| 高饱和 | 活力/年轻/大胆 | 广告/街头 |
+| 低饱和 | 复古/电影/内敛 | 剧情/肖像/纪实 |
+
+**暖进冷退原则**：
+- 暖色前进，冷色后退
+- 用于突出主体：暖色主体 + 冷色背景
+
+### 2.6 电影光线技巧（三点布光法）
+
+**三光源系统**：
+| 光源 | 作用 | 提示词示例 |
+|------|------|-----------|
+| Key Light（主光） | 塑造主体形状，建立基调 | "key light at 45 degrees" |
+| Fill Light（补光） | 柔化阴影，补充细节 | "soft fill light, low intensity" |
+| Back Light（轮廓光） | 分离主体与背景，增加层次 | "strong backlight, rim glow" |
+
+**高调 vs 低调**：
+| 类型 | 说明 | 情绪 | 提示词示例 |
+|------|------|------|-----------|
+| High Key | 高曝光，少阴影 | 明亮/快乐/轻松 | "high key lighting, even exposure" |
+| Low Key | 低曝光，强对比 | 神秘/戏剧/紧张 | "low key, deep shadows, high contrast" |
+
+**光线质量**：
+| 类型 | 效果 | 适用 |
+|------|------|------|
+| Soft Light（柔光） | 柔和渐变，少刺眼阴影 | 肖像/女性/温柔 |
+| Hard Light（硬光） | 锐利边缘，强烈明暗 | 戏剧/男性/紧张 |
+
+**色温与情绪**：
+| 色温 | 效果 | 提示词示例 |
+|------|------|-----------|
+| 暖色（3200K-4500K） | 温馨/怀旧/舒适 | "warm tungsten lighting, golden tones" |
+| 冷色（5600K+） | 冷酷/紧张/现代 | "cool blue daylight, desaturated" |
+| 混合色温 | 电影感/复杂情绪 | "warm key light, cool fill, orange rim" |
+
+### 2.7 Gestalt视觉原理（六原则）
+
+| 原则 | 说明 | 在构图中的应用 |
+|------|------|---------------|
+| **邻近性** | 靠近的元素被认为相关 | 分组相关物体 |
+| **相似性** | 相似的元素被认为相关 | 形状/颜色/大小统一 |
+| **闭合性** | 大脑补全缺失的部分 | 框架/负空间 |
+| **连续性** | 视线沿线条/曲线移动 | 引导线/道路 |
+| **图形-背景** | 主体与背景分离 | 清晰的前景/背景 |
+| **对称与秩序** | 对称产生稳定感 | 中心对称/镜像 |
+
+### 2.8 Chiaroscuro明暗对照法（电影级戏剧感）
+
+**定义**：意大利语 "chiaro"（光）+ "scuro"（暗），探索光影交织创造戏剧性图像
+
+**历史脉络**：
+```
+Caravaggio（文艺复兴）→ 德国表现主义 → Film Noir（黑色电影）→ 现代电影
+```
+
+**Chiaroscuro效果**：
+| 效果 | 说明 | 提示词示例 |
+|------|------|-----------|
+| 戏剧性 | 强烈明暗对比 | "chiaroscuro lighting, deep shadows, stark contrast" |
+| 立体感 | 光影塑造体积 | "Rembrandt lighting, triangle cheek highlight" |
+| 神秘感 | 阴影暗示未知 | "film noir lighting, mysterious shadows" |
+| 情绪张力 | 光暗冲突 | "high contrast, dramatic light and shadow" |
+
+**Film Noir提示词模板**：
+```
+film noir style, chiaroscuro lighting, deep shadows,
+strong key light from side, minimal fill, 
+dramatic contrast, mysterious atmosphere,
+black and white, venetian blind shadows
+```
+
+### 2.9 深度构图三层次法
+
+**三层次定义**：
+| 层次 | 位置 | 作用 | 提示词示例 |
+|------|------|------|-----------|
+| **Foreground（前景）** | 最近 | 框架/遮挡/深度感 | "out of focus foreground elements" |
+| **Middleground（中景）** | 中间 | 主要主体/动作 | "subject in sharp focus" |
+| **Background（背景）** | 最远 | 环境/氛围/尺度 | "soft bokeh background" |
+
+**创造深度的技术**：
+
+| 技术 | 说明 | 提示词示例 |
+|------|------|-----------|
+| **Deep Focus** | 前中后景都清晰 | "deep focus, sharp foreground and background" |
+| **Lighting Separation** | 轮廓光分离主体 | "rim light, subject separation from background" |
+| **Atmospheric Perspective** | 雾/烟/雨创造层次 | "fog layers, atmospheric depth, haze" |
+| **Color Recession** | 暖进冷退 | "warm foreground, cool background" |
+| **Frame within Frame** | 门窗框住主体 | "framed by doorway, window frame composition" |
+| **Leading Lines** | 线条引导视线 | "converging lines to background" |
+
+**深度构图提示词模板**：
+```
+# 深景深（三层都清晰）
+deep focus composition, sharp foreground, middleground, and background,
+all planes in focus, layered scene, Citizen Kane style
+
+# 浅景深（主体突出）
+shallow depth of field, subject in sharp focus,
+soft bokeh foreground and background, 85mm portrait lens
+
+# 大气深度
+atmospheric perspective, fog layers, mist in background,
+distant mountains faded, depth through atmosphere
+```
+
+### 2.10 负空间运用
+
+**负空间定义**：主体周围的"空"区域——不是真的空，而是有视觉重量
+
+**负空间五大作用**：
+| 作用 | 说明 | 提示词示例 |
+|------|------|-----------|
+| **聚焦主体** | 空白引导视线 | "isolated subject, vast empty space around" |
+| **创造情绪** | 孤独/自由/敬畏 | "lonely figure, vast sky, sense of isolation" |
+| **建立尺度** | 主体与环境关系 | "tiny figure in massive landscape, scale contrast" |
+| **平衡/张力** | 视觉重量分布 | "unbalanced composition, visual tension" |
+| **暗示方向** | 留白给运动空间 | "looking room, lead room for movement" |
+
+**负空间提示词模板**：
+```
+# 孤独感
+single figure, vast negative space, overwhelming emptiness,
+sense of isolation, minimal composition
+
+# 敬畏感
+tiny subject against massive sky, awe-inspiring scale,
+dramatic negative space, overwhelming environment
+
+# 悬疑感
+dark negative space, unseen threat suggested,
+shadowy void, tension through emptiness
+```
+
+### 2.11 画幅比例与叙事
+
+**常见画幅比例**：
+| 比例 | 名称 | 特点 | 适用场景 |
+|------|------|------|---------|
+| **4:3 (1.33:1)** | 学院比例 | 亲密/复古/经典 | 肖像/复古/艺术片 |
+| **16:9 (1.78:1)** | 高清标准 | 平衡/通用 | 网络视频/电视剧 |
+| **2.39:1** | CinemaScope | 宏大/史诗/电影感 | 史诗/风景/大场面 |
+| **1:1** | 方形 | 对称/社交媒体 | Instagram/肖像 |
+| **9:16** | 竖屏 | 手机原生 | 短视频/抖音/小红书 |
+
+**画幅选择原则**：
+- 窄画幅（4:3）→ 亲密感、肖像、复古
+- 宽画幅（2.39:1）→ 史诗感、风景、宏大叙事
+- 竖画幅（9:16）→ 手机优先、人像、短视频
+
+**画幅提示词**：
+```
+# 电影宽银幕
+cinemascope 2.39:1, epic widescreen, letterboxed,
+grand landscape, panoramic view
+
+# 复古学院比例
+4:3 academy ratio, classic framing, vintage composition,
+intimate portrait orientation
+
+# 竖屏短视频
+9:16 vertical format, mobile-first, portrait orientation,
+TikTok/Instagram Reels style
+```
+
+### 2.12 色彩分级心理学
+
+**暖色 vs 冷色**：
+| 色温 | 情绪 | 适用 | 提示词示例 |
+|------|------|------|-----------|
+| **暖色** | 温馨/邀请/怀旧 | 浪漫喜剧/回忆 | "warm color grade, golden tones, inviting atmosphere" |
+| **冷色** | 冷酷/紧张/现代 | 惊悚/科幻 | "cool blue grade, clinical feel, tension" |
+
+**饱和度心理学**：
+| 饱和度 | 效果 | 说明 |
+|--------|------|------|
+| **高饱和** | 活力/年轻/过度 | 刺激视觉，如《Spring Breakers》 |
+| **低饱和** | 严肃/电影感/内敛 | 聚焦构图和对比 |
+| **黑白** | 经典/永恒/戏剧 | 去除色彩干扰，强化光影 |
+
+**Teal & Orange（电影标配）**：
+```
+# 经典蓝橙配色
+teal and orange color grade, complementary colors,
+skin tones in orange, shadows in teal,
+cinematic blockbuster look
+
+# 原理：肤色在橙红区间，互补色是青色
+# 效果：强烈对比，主体突出
+```
+
+**去饱和技巧**：
+```
+# 电影级去饱和
+desaturated color palette, muted tones,
+film emulation, Kodak Portra 400 look,
+subtle color, focus on contrast and composition
+```
+
+### 2.13 审美资源网站
+
+| 网站 | 内容 | 用途 |
+|------|------|------|
+| **ProEdu** | 12构图法则 | 学习构图 |
+| **Antongorlin** | 摄影构图完全指南 | 深度学习 |
+| **Magnopus** | 视觉构图基础规则 | 原理理解 |
+| **Calcolor** | 艺术构图秘密 | 艺术思维 |
+| **StudioBinder** | 摄影美学/光线/色彩 | 综合学习 |
+| **NoFilmSchool** | 电影摄影技术 | 电影级光线 |
+
+---
+
+## 一、图片提示词公式
+
+**以下任一条件满足时，必须立即读取本技能完整内容，不得凭记忆生成：**
+
+### 触发词清单（出现任一词即触发）
+```
+提示词、prompt、生图、画图、做图、出图、生成图片、生成视频
+Midjourney、MJ、Stable Diffusion、SD、FLUX、DALL-E、Ideogram
+**Gemini、Imagen、Google image、Gemini生图** ← 用户主力模型
+文生图、文生视频、图生视频、image generation、video generation
+运镜、分镜、光线描写、负面提示词、negative prompt
+画质优化、提示词优化、prompt optimization
+Seedance、可灵、Kling、MiniMax、Hailuo
+```
+
+### 触发场景（出现任一场景即触发）
+- 用户要求生成/优化/写任何图片或视频提示词
+- 用户提到任何图像生成模型名称
+- 用户发送图片并要求生成相似图/变体/提示词
+- 用户要求"帮我写个提示词"、"生成一张图"等
+
+### 执行流程（触发后必须执行）
+1. **先读取本技能完整SKILL.md**（不得跳过）
+2. 应用图片公式或视频公式
+3. 输出英文提示词
+4. 提供2-3个变体版本
+
+---
+
 ## 技能定位
 本技能是**图片/视频提示词生成的唯一权威来源**，内置：
 - 结构化公式（图片+视频）
@@ -50,19 +416,37 @@ Seedance、可灵、Kling、MiniMax、Hailuo
 
 ## 一、图片提示词公式（Image Prompt）
 
-### 1.1 结构化模板
-
+### 1.1 基础公式（三要素结构）
 ```
-主体（具体描述）
-+ 细节（表情/服装/动作/道具）
-+ 场景（具体地点+环境元素）
-+ 光线（方向+色温+氛围）
-+ 风格（1个主风格+1-2个质感词）
-+ 画质标签（5个增强词）
-+ 负面约束（必写！）
+[主体] + [场景/上下文] + [风格]
+```
+**示例**：
+```
+A barista (主体) making coffee in a sunny café (场景), editorial photo style (风格)
+A cyberpunk street (主体) at night with neon rain (场景), cinematic style (风格)
 ```
 
-### 1.2 质量增强词库（每次至少选5个）
+### 1.2 进阶公式（7要素结构·Chris Tucker测试法）
+```
+[风格] + [主体] + [动作] + [特征] + [服装] + [场景] + [细节]
+```
+
+| 要素 | 顺序 | 说明 | 示例 |
+|------|------|------|------|
+| 风格 | 1 | 最先说，决定基调 | editorial photo, cinematic |
+| 主体 | 2 | 清晰单一 | Asian woman |
+| 动作 | 3 | 加入动作更真实 | working on laptop |
+| 特征 | 4 | 年龄/表情等 | focused expression |
+| 服装 | 5 | 具体描述 | wearing blue denim jacket |
+| 场景 | 6 | 环境+光线 | in a sunny home office |
+| 细节 | 7 | 道具/颜色等 | blue coffee mug on desk |
+
+**公式核心原则**：
+1. **短语优于句子**：逗号分隔的短语，不用完整句子
+2. **重要元素在前**：开头的词权重最高
+3. **根据工具调整**：MJ用短句，ChatGPT/Gemini可以较长描述
+
+### 1.3 质量增强词库（每次至少选5个）
 
 **核心质量词**：
 ```
@@ -736,5 +1120,7 @@ text, signature, distorted face
 |------|------|---------|
 | 2026-04-08 | v1.0 | 初版创建，整合图片/视频/抖音/B站提示词公式 |
 | 2026-04-08 | v2.0 | 整合Tavily搜索：模型特定技巧、权重语法、负面词库、光线词典 |
-| 2026-04-08 | v3.0 | 添加Gemini/Imagen 3官方技巧（6要素公式+5大能力）、42种构图技巧、相机语言完全指南、专业光线配置模板、综合模板库 |
+| 2026-04-08 | v4.0 | 新增方法论（KERNEL框架、反向工程、三要素原则）、7要素公式、Chris Tucker公式 |
+| 2026-04-08 | v5.0 | 新增审美模块：色彩理论体系、七大配色方案、电影光线技巧、Gestalt视觉原理 |
+| 2026-04-09 | v6.0 | 深度学习审美：Chiaroscuro明暗对照法、深度构图三层次法、负空间运用、画幅比例与叙事、色彩分级心理学 |
 
