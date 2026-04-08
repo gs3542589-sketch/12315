@@ -129,7 +129,20 @@
 
 ### 待完成
 - [~] QMD query/vsearch：node-llama-cpp挂起问题，尝试20+次修复未果。CUDA 12.8与node-llama-cpp不兼容。BM25 search正常
-- [~] Brave Search API Key：未配置，web_search不可用
+- [~] YUNWU_IMAGE_KEY：已配置，仅生图时使用
+
+### API Key 配置管理（2026-04-08·铁律）
+**云雾API使用限制（最高优先级·禁止违反）：**
+- YUNWU_IMAGE_KEY（sk-EasUTnaX...）：仅用于**生图**（image generation）
+- YUNWU_VISION_KEY（sk-VHBxt0yX...）：仅用于**识图**（你发图片给我时）
+- 任何其他场景（对话/分析/搜索/写作等）：**严禁调用云雾API**
+- 触发条件：必须同时满足"生图 OR 识图" + "用户发送了图片/截图"
+- 违规处罚：立即停止并告知用户
+
+**已安装API：**
+- TAVILY_API_KEY（tvly-dev-3Qw7Ce...）：搜索/采集，无限制
+- YUNWU_IMAGE_KEY（sk-EasUTnaX...）：仅生图
+- YUNWU_VISION_KEY（sk-VHBxt0yX...）：仅识图
 
 ### 重要教训（2026-04-06）
 - 未完成的工作不要问用户，必须继续解决或找到替代方案
