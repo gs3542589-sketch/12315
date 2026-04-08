@@ -46,6 +46,7 @@
 - creative-toolkit：5引擎图像路由（Nanobanana2/Seedream5/GPTImage/Midjourney/ComfyUI）
 - summarize-pro：20功能摘要引擎
 - clonev：声音克隆Coqui XTTS v2
+- **aigc-prompt-factory（2026-04-08新建）**：图片/视频提示词优化工厂，内置公式+质量词库+负面提示词
 
 ### Seedance 2.0 文档体系（2026-04-07更新）
 | 文档 | 用途 | 大小 |
@@ -104,6 +105,13 @@
 - 汇报必须验证，禁止推测！Git推送后必须检查git log确认远程同步
 - "命令返回ok" ≠ "功能正常"，必须实际验证效果
 - 未验证的项不得标记完成，如实标注状态
+- **提示词质量决定图片质量**：结构化公式+光线描写+负面约束缺一不可（2026-04-08）
+
+## 用户当前工作流（2026-04-08更新）
+- 主力模型：MiniMax M2.7（hytriu/MiniMax-M2.7-highspeed）
+- 内容平台：抖音 + B站
+- 关注模型：Qwen2.5-14B本地部署（RTX 4070 12GB可跑INT4量化版）
+- 当前痛点：提示词生成图片质量差 → 已创建aigc-prompt-factory技能解决
 
 ## 环境修复记录（2026-04-05）
 ### 已完成
