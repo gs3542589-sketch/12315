@@ -5,6 +5,7 @@
 3. QMD检索优先：检索召回替代全量历史加载，每次最多Top5片段
 4. 配置文件上限：总大小严格≤10KB，冗余自动归档
 5. **浏览器强制规则：仅允许使用 Microsoft Edge，禁止使用其他浏览器**
+6. **测试后必须固化：任何测试/调试完成后，必须提炼N步标准流程写入MEMORY.md对应章节；测试文件归档，但流程要点必须进核心记忆**
 
 ## QMD检索配置（自动执行）
 - QMD collection: user_workspace_memory
@@ -81,14 +82,23 @@ seedance-shot-design/aigc-prompt-factory/viral-video-script/viral-headline-write
 **执行任何生图/发图任务前，必须先读本节，不允许凭记忆试**
 
 ### 一、生图标准流程（云雾API + Gemini）
-
 **触发条件**：用户要求生图、生成图片、画图
 **第一步**：读取 `aigc-prompt-factory` SKILL.md，应用结构化公式
 **第二步**：调用云雾API生成图片
-- API: YUNWU_IMAGE_KEY（sk-EasUTnaX...）
-- 禁止调用YUNWU_VISION_KEY做生图
-- 提示词结构：`主体 + 动作过程 + 场景 + 光线 + 镜头语言 + 风格质感 + 画质标签 + 负面约束`
-- 游戏内容必须用游戏词汇：UE5/game CG/game screenshot，禁用 photorealistic/cinematic photography
+
+**命令格式**：
+```
+python scripts/yunwu_image.py "提示词内容" [输出文件名]
+```
+
+**配置位置**：`scripts/yunwu_config.json`
+- API Key: sk-EasUTnaXh0JzQEqYIbrtnuIfWl2nD28xZPw6QhMx9ykNWwqL
+- Base URL: https://api.yunwu.ai/v1
+- 默认Model: gpt-image-1.5-all
+- 默认Size: 1024x1024
+
+**默认输出目录**：`output/images/`
+**禁止调用YUNWU_VISION_KEY做生图**，识图用另一套API
 
 ### 二、发图标准流程（按目标渠道选一）
 
@@ -166,15 +176,12 @@ seedance-shot-design/aigc-prompt-factory/viral-video-script/viral-headline-write
 - Git：已授权 ✅
 
 ### API Key 配置管理（2026-04-08·铁律）
-**云雾API使用限制（最高优先级·禁止违反）：**
-- YUNWU_IMAGE_KEY（sk-EasUTnaX...）：仅用于**生图**（image generation）
-- YUNWU_VISION_KEY（sk-VHBxt0yX...）：仅用于**识图**（你发图片给我时）
-- 任何其他场景（对话/分析/搜索/写作等）：**严禁调用云雾API**
+**云雾API硬分离：YUNWU_IMAGE_KEY=生图用，YUNWU_VISION_KEY=识图用，禁止混用**
 - 触发条件：必须同时满足"生图 OR 识图" + "用户发送了图片/截图"
-- 违规处罚：立即停止并告知用户
+- 违规：立即停止并告知用户
 
 **已安装API：**
-- TAVILY_API_KEY（tvly-dev-3Qw7Ce...）：**搜索/采集，无限制（免费）✅**
+- TAVILY_API_KEY（tvly-dev-3Qw7Ce...）：搜索/采集，无限制 ✅
 - YUNWU_IMAGE_KEY（sk-EasUTnaX...）：仅生图
 - YUNWU_VISION_KEY（sk-VHBxt0yX...）：仅识图
 
