@@ -1,4 +1,90 @@
 # MEMORY.md - 长期高价值记忆（严格≤10KB）
+
+---
+
+## 🏛️ 四层记忆架构（2026-04-09·借鉴MemPalace）
+
+**借鉴MemPalace设计，分层加载降低Token开销**
+
+| 层级 | 名称 | 内容 | 触发时机 |
+|------|------|------|----------|
+| **L0** | 身份层 | SOUL.md + USER.md（角色+用户画像） | 始终加载 |
+| **L1** | 核心层 | MEMORY.md核心规则（≤10KB） | 始终加载 |
+| **L2** | 近期层 | memory/YYYY-MM-DD.md + QMD检索 | 每日启动 |
+| **L3** | 存档层 | memory/conversations/存档原文 | 按需查询 |
+
+**启动时只加载L0+L1，L2按需，L3按需检索** — 不全量加载历史
+
+---
+
+## 对话原文归档规则（2026-04-09·新增强制）
+
+**核心原则：原文优先于摘要**
+
+### 归档触发条件（满足任一即归档）
+1. 完成重要测试/调试后
+2. 完成多轮讨论形成决策后
+3. 用户明确要求"存档这个对话"
+4. 单日对话超过50轮时
+
+### 归档执行
+```bash
+python scripts/archive_conversation.py "话题标签" < messages.json
+```
+
+### 归档位置
+```
+memory/conversations/YYYY-MM-DD/
+├── 话题标签_HHMMSS.json    # 原文存档
+└── index.json              # 索引
+```
+
+### 归档内容
+- 原文verbatim（非摘要）
+- 元数据：topic/archived_at/messages
+- 自动去重：同topic只保留最新
+
+---
+
+## 知识图谱规则（2026-04-09·新增强制）
+
+**追踪实体、关系、时序事实**
+
+### 实体类型
+- `person:姓名` - 人物
+- `project:名称` - 项目
+- `tool:名称` - 工具/API
+- `decision:内容` - 决策
+
+### 添加时机
+1. 新发现用户偏好时
+2. 重要决策形成时
+3. 团队/项目信息变化时
+4. 工具选型确定时
+
+### 命令
+```bash
+# 查询实体
+python scripts/kg_query.py entity "关键词"
+
+# 查询关系
+python scripts/kg_query.py relations <实体ID>
+
+# 查询时序
+python scripts/kg_query.py timeline <实体名>
+```
+
+### 数据格式
+```json
+{
+  "entities": {"person:张三": {...}},
+  "relations": [{"from": "person:张三", "relation": "uses", "to": "tool:Seedance"}],
+  "facts": [{"entity": "person:张三", "fact": "偏好竖版视频"}]
+}
+```
+
+---
+
 ## 核心系统规则（已固化）
 1. 记忆分层架构：SOUL → USER → MEMORY → Daily日志 → TOOLS → AGENTS
 2. 记忆入库标准：满足≥2条才允许写入（长期/复用/防坑/可验证）

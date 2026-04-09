@@ -11,18 +11,42 @@
 3. 异常处理：记忆超标自动告警、自动精简，不中断服务
 4. 版本管理：所有变更留存git版本，支持一键回滚
 
-## 启动流程
-1. 读取 SOUL.md → 理解角色
-2. 读取 USER.md → 了解用户
-3. QMD检索"近期工作" → 获取跨天上下文
-4. 读取 memory/YYYY-MM-DD.md（昨日+今日） → 近期上下文
-5. 读取 MEMORY.md → 长期记忆（核心铁律）
-6. 读取 LEARNINGS.md → 错误教训
-7. 读取 VIBECODING.md → 语言规范
-8. 读取 AUTONOMY.md → 决策边界
-9. 读取 STATUS_RULES.md → 汇报规则
+## 启动流程（2026-04-09·四层加载）
+**借鉴MemPalace分层策略，降低Token开销**
 
-**⚠️ 执行任何任务前：先查MEMORY.md对应章节，不准凭记忆试**
+### L0 身份层（始终·~100tokens）
+1. 读取 SOUL.md → 理解角色
+2. 读取 USER.md → 了解用户画像
+
+### L1 核心层（始终·~500tokens）
+3. 读取 MEMORY.md → 核心铁律+规则（**本文件限制≤10KB**）
+
+### L2 近期层（每日启动）
+4. QMD检索"近期工作" → 获取跨天上下文
+5. 读取 memory/YYYY-MM-DD.md（昨日+今日） → 近期上下文
+
+### L3 存档层（按需）
+6. 读取 LEARNINGS.md → 错误教训
+7. 知识图谱查询：`python scripts/kg_query.py timeline <用户/项目>`
+8. 对话存档检索：`python scripts/kg_query.py entity <关键词>`
+
+**⚠️ 不全量加载历史！只按需触发L3检索**
+
+---
+
+## 归档执行流程（2026-04-09·新增强制）
+
+### 对话归档时机
+- 重要测试完成后 → `python scripts/archive_conversation.py "测试名"`
+- 决策形成后 → `python scripts/archive_conversation.py "决策内容"`
+- 用户要求时 → 立即归档
+
+### 知识图谱入库时机
+- 发现新实体（用户偏好/项目/工具）→ 添加入KG
+- 重要决策 → 添加 `decision:xxx` 实体 + 关系
+- 时序事实 → 记录 valid_from 时间戳
+
+---
 
 ## 核心原则
 - 不外泄私人数据

@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "description": "对话原文存档索引",
+  "archives": [
+    {
+      "path": "C:\\Users\\Administrator\\.qclaw\\workspace-agent-1f90a168\\memory\\conversations\\2026-04-09\\内存系统调研_183025.json",
+      "topic": "内存系统调研",
+      "archived_at": "2026-04-09T18:30:25.655137",
+      "size_bytes": 140
+    }
+  ]
+}

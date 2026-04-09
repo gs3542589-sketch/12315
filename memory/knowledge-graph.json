@@ -1,0 +1,51 @@
+{
+  "schema": "kg-v1",
+  "description": "知识图谱 - 追踪实体、关系、时序事实",
+  "entities": {
+    "decision:不需要MemPalace": {
+      "name": "不需要MemPalace",
+      "type": "decision",
+      "reason": "MemPalace定位是对话存档，我们痛点是流程固化",
+      "valid_from": "2026-04-09T18:00:00"
+    },
+    "project:记忆系统优化": {
+      "name": "记忆系统优化",
+      "type": "project",
+      "started": "2026-04-09T18:00:00"
+    }
+  },
+  "relations": [
+    {
+      "from": "project:记忆系统优化",
+      "relation": "includes",
+      "to": "feature:对话归档层",
+      "valid_from": "2026-04-09T18:00:00"
+    },
+    {
+      "from": "project:记忆系统优化",
+      "relation": "includes",
+      "to": "feature:四层启动",
+      "valid_from": "2026-04-09T18:00:00"
+    },
+    {
+      "from": "project:记忆系统优化",
+      "relation": "includes",
+      "to": "feature:知识图谱",
+      "valid_from": "2026-04-09T18:00:00"
+    }
+  ],
+  "facts": [
+    {
+      "entity": "decision:不需要MemPalace",
+      "fact": "借鉴MemPalace思路但不引入，保持本地化低成本"
+    },
+    {
+      "entity": "feature:对话归档层",
+      "fact": "原文优先于摘要，scripts/archive_conversation.py归档"
+    },
+    {
+      "entity": "feature:四层启动",
+      "fact": "L0身份/L1核心/L2近期/L3存档，分层降低Token"
+    }
+  ]
+}
