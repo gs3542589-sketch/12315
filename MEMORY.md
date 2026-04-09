@@ -145,8 +145,38 @@
 - [x] PyTorch CUDA ✅：根因Python 3.14不在cu124索引，改用Python 3.12 → torch=2.6.0+cu124, CUDA=True, RTX 4070
 
 ### 待完成
-- [~] QMD query/vsearch：node-llama-cpp挂起问题，尝试20+次修复未果。CUDA 12.8与node-llama-cpp不兼容。BM25 search正常
+- [x] QMD GPU加速 ✅ 2026-04-09：根因是qmd调用getLlama()时未传gpu参数，已patch llm.js添加QMD_GPU环境变量支持
 - [~] YUNWU_IMAGE_KEY：已配置，仅生图时使用
+
+### QMD GPU修复记录（2026-04-09）
+**根因分析**：
+- 之前记录"CUDA 12.8与node-llama-cpp不兼容"**不准确**
+- 真正原因：qmd的llm.js调用`getLlama({build: 'autoAttempt'})`时未传`gpu`参数
+- node-llama-cpp默认行为：不传gpu参数时只用CPU，不会自动检测GPU
+
+**验证结果**：
+- `getLlama({build: 'autoAttempt'})` → GPU: false
+- `getLlama({gpu: 'auto', build: 'autoAttempt'})` → GPU: cuda ✅
+- `getLlama({gpu: 'cuda', build: 'autoAttempt'})` → GPU: cuda ✅
+
+**修复方案**：
+- 已patch `C:\Users\Administrator\.bun\install\cache\@tobilu\qmd@2.0.1@@registry.npmmirror.com@@@1\dist\llm.js`
+- 添加环境变量`QMD_GPU`支持，默认值为"auto"
+- 修复后qmd status显示：`GPU: cuda (offloading: yes)`
+
+**使用方法**：
+```powershell
+# 默认自动检测GPU
+qmd query "测试"
+
+# 强制使用CPU
+$env:QMD_GPU = "cpu"; qmd query "测试"
+
+# 强制使用CUDA
+$env:QMD_GPU = "cuda"; qmd query "测试"
+```
+
+**注意**：qmd升级后需要重新patch，或提PR给qmd作者
 
 ### API Key 配置管理（2026-04-08·铁律）
 **云雾API使用限制（最高优先级·禁止违反）：**
