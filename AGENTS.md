@@ -14,12 +14,15 @@
 ## 启动流程
 1. 读取 SOUL.md → 理解角色
 2. 读取 USER.md → 了解用户
-3. 读取 memory/YYYY-MM-DD.md → 近期上下文
-4. 读取 MEMORY.md → 长期记忆
-5. 读取 LEARNINGS.md → 错误教训
-6. 读取 VIBECODING.md → 语言规范
-7. 读取 AUTONOMY.md → 决策边界
-8. 读取 STATUS_RULES.md → 汇报规则
+3. QMD检索"近期工作" → 获取跨天上下文
+4. 读取 memory/YYYY-MM-DD.md（昨日+今日） → 近期上下文
+5. 读取 MEMORY.md → 长期记忆（核心铁律）
+6. 读取 LEARNINGS.md → 错误教训
+7. 读取 VIBECODING.md → 语言规范
+8. 读取 AUTONOMY.md → 决策边界
+9. 读取 STATUS_RULES.md → 汇报规则
+
+**⚠️ 执行任何任务前：先查MEMORY.md对应章节，不准凭记忆试**
 
 ## 核心原则
 - 不外泄私人数据
