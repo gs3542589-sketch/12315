@@ -18,47 +18,28 @@
 - 优先级：Token成本 > 执行效率 > 体验流畅度
 - 禁止行为：记忆臃肿、全量加载、重复写入、低噪音入库
 
-## 技能树（已内化·59个用户安装+41系统内置）
+## 技能树（已内化·59用户+41系统）
 ### 六大能力域
-1. 🔴 AIGC内容生产（25技能）：cinematic-script-writer/ai-video-script-automaton/video-script-generator/script-to-storyboard/seedance全系/video-prompting-guide/video-reverse-prompt/creative-toolkit/image-cog/image-vision/image2prompt/music-cog/clonev/openai-tts/ai-subtitle-generator/prompt-optimizer/tcm-video-factory/novel-generator/short-drama-writer/drama-generator/story-cog
-2. 🟠 信息采集与情报（9技能）：deep-research-pro/tavily/baoyu-url-to-markdown/bilibili-hot-monitor/douyin-video-analyst/summarize-pro/rag/data-analyst-pro/structure-thinking
-3. 🟡 浏览器自动化与发布（6技能）：agent-browser/douyin-downloader/yt-video-downloader/social-media-publish
-4. 🟢 系统运维与自进化（10技能）：self-improving/capability-evolver/openclaw-auto-updater/remind-me/free-ride/github/qclaw-openclaw
-5. 🔵 技能开发与工具链（9技能）：skill-creator/mcp-builder/agentic-mcp-server-builder/coding/claude-code/context7-docs/api-gateway
-6. 🟣 办公与生产力（41系统内置）：腾讯文档/会议/问卷/PDF/Word/PPT/Excel/邮件/新闻/金融数据/天气
+1. 🔴 AIGC内容生产（25技能）：seedance全系/creative-toolkit/image-cog/clonev/openai-tts/prompt-optimizer等
+2. 🟠 信息采集（9技能）：tavily/summarize-pro/deep-research-pro等
+3. 🟡 浏览器自动化（6技能）：agent-browser/douyin-downloader等
+4. 🟢 系统运维（10技能）：self-improving/openclaw-auto-updater等
+5. 🔵 技能开发（9技能）：skill-creator/mcp-builder/coding等
+6. 🟣 办公生产力（41系统内置）：腾讯文档/会议/问卷/PDF/Word/Excel/邮件等
 
-### 技能整合记录（2026-04-07）
-| 操作 | 技能 | 原因 | 替代方案 |
-|------|------|------|----------|
-| ❌ 删除 | online-search | 功能被覆盖，需登录 | multi-search-engine（17引擎聚合）|
-| ⚠️ 保留 | weather (builtin) | 简单查询，不可删 | 与 weather-advisor 互补 |
-| ⚠️ 保留 | weather-advisor | 穿衣建议/预警 | 与 weather (builtin) 互补 |
+### 高频核心技能
+seedance-shot-design/aigc-prompt-factory/viral-video-script/viral-headline-writer/xhs-post-scheduler/clonev/summarize-pro/creative-toolkit
 
-### 高频核心技能速查
-- seedance-shot-design：导演式分镜技能，6场景模板
-- ai-novel-writer：雪花写作法10步创作流程
-- viral-video-script：爆款短视频脚本，5大文案结构
-- xhs-post-scheduler：小红书发布时间安排
-- xhs-comment-designer：评论区金句引导回复
-- viral-headline-writer：爆款标题15个公式
-- niche-topic-generator：赛道选题助手
-- prompt-optimizer：58种提示词优化技术
-- creative-toolkit：5引擎图像路由（Nanobanana2/Seedream5/GPTImage/Midjourney/ComfyUI）
-- summarize-pro：20功能摘要引擎
-- clonev：声音克隆Coqui XTTS v2
-- **aigc-prompt-factory（2026-04-08新建）**：图片/视频提示词优化工厂，内置公式+质量词库+负面提示词
-
-### ⚠️ 技能强制触发铁律（2026-04-08）
-**以下关键词出现时，必须立即读取对应技能SKILL.md，禁止凭记忆生成：**
-| 触发词 | 强制读取技能 |
-|--------|-------------|
-| 提示词、prompt、生图、画图、MJ、SD、FLUX | `aigc-prompt-factory` |
-| 分镜、运镜、镜头语言、视频脚本 | `seedance-shot-design` |
-| 短视频脚本、抖音脚本、爆款文案 | `viral-video-script` |
-| 爆款标题、标题公式 | `viral-headline-writer` |
-| 小红书发布、发布时间 | `xhs-post-scheduler` |
-| 小说写作、章节创作 | `ai-novel-writer` |
-| 声音克隆、克隆声音 | `clonev` |
+### 技能强制触发铁律（2026-04-08）
+| 触发词 | 技能 |
+|--------|------|
+| 生图/画图/MJ/SD | aigc-prompt-factory |
+| 分镜/运镜 | seedance-shot-design |
+| 短视频脚本 | viral-video-script |
+| 爆款标题 | viral-headline-writer |
+| 小红书发布 | xhs-post-scheduler |
+| 小说写作 | ai-novel-writer |
+| 声音克隆 | clonev |
 
 **触发后执行流程：读取SKILL.md → 应用公式 → 输出结果 → 提供变体**
 
@@ -83,30 +64,11 @@
 ### 万能公式
 `主体 + 动作过程 + 场景 + 光线 + 镜头语言 + 风格质感 + 画质 + 约束`
 
-### 稳定动作词
-`缓慢、连贯、自然、慢动作、平稳跟拍`
-
-### 稳定镜头词
-`平稳跟拍、缓慢推进、固定机位、轻度环绕、中景→近景`
-
 ### 必写约束（7条）
-1. 面部稳定不变形
-2. 手指不畸形/不多指/不缺指
-3. 动作流畅不抽搐
-4. 画面稳定不闪烁
-5. 不要字幕/文字水印/Logo
-6. 无版权IP（迪士尼/漫威/星战）
-7. 无名人脸（做「人设」不做「个人复刻」）
+面部不变形、手指不畸形、动作流畅、画面稳定、无水印、无版权IP、无名人脸
 
 ### 时长建议
-- 新手：5-8秒
-- 有经验：10-15秒
-- 进阶：5秒×多段拼接
-
-### 三种生成模式
-1. 文生视频：提示词写细+约束写清楚
-2. 图生视频：参考图定上限+提示词管动作运镜
-3. 多模态：少喂喂准，禁止一次塞9图+3视频+3音频
+新手5-8秒，有经验10-15秒，进阶5秒×多段拼接。三种模式：文生视频/图生视频/多模态（少喂喂准）
 
 ## 三角洲行动知识库（2026-04-07）
 - 位置：`knowledge-base/delta-force/`
@@ -115,6 +77,43 @@
 - 内容：爆梗/黑话/干员/创作方案/B站分析/创作者策略
 - 源数据：抖音/B站/小红书调研 + B站热门视频分析
 
+## ⚠️ 核心流程固化：生图→发图闭环（2026-04-09）
+**执行任何生图/发图任务前，必须先读本节，不允许凭记忆试**
+
+### 一、生图标准流程（云雾API + Gemini）
+
+**触发条件**：用户要求生图、生成图片、画图
+**第一步**：读取 `aigc-prompt-factory` SKILL.md，应用结构化公式
+**第二步**：调用云雾API生成图片
+- API: YUNWU_IMAGE_KEY（sk-EasUTnaX...）
+- 禁止调用YUNWU_VISION_KEY做生图
+- 提示词结构：`主体 + 动作过程 + 场景 + 光线 + 镜头语言 + 风格质感 + 画质标签 + 负面约束`
+- 游戏内容必须用游戏词汇：UE5/game CG/game screenshot，禁用 photorealistic/cinematic photography
+
+### 二、发图标准流程（按目标渠道选一）
+
+| 渠道 | 工具 | 参数 |
+|------|------|------|
+| **webchat** | `read`工具 | 直接读本地图片路径，自动渲染 |
+| **微信** | `message`工具 | channel=wechat-access, target=1334770905, filePath=本地路径 |
+| **飞书** | `message`工具 | **不填channel参数！** filePath=本地路径（自动路由到当前feishu会话） |
+
+**⚠️ 飞书发图铁律：禁止指定channel=feishu，会报Unknown channel错误**
+
+### 三、执行前必检清单
+1. QMD检索"生图 发图"关键词，确认本流程已加载
+2. 生图前先读aigc-prompt-factory技能
+3. 发图前确认目标渠道，按上表选正确工具和参数
+4. 发图后验证是否成功（飞书返回messageId=成功）
+5. 失败立即查MEMORY.md或问用户，不准凭记忆乱试
+
+### 四、失败应急处理（优先级顺序）
+1. 报错 → 先查MEMORY.md/QMD，不准立刻试其他工具
+2. MEMORY.md无解 → 上网搜索（ Tavily/multi-search-engine）
+3. 搜索无解 → 如实告知用户，不编造
+
+---
+
 ## 重大教训（防踩坑）
 - 汇报必须验证，禁止推测！Git推送后必须检查git log确认远程同步
 - "命令返回ok" ≠ "功能正常"，必须实际验证效果
@@ -122,6 +121,7 @@
 - **提示词质量决定图片质量**：结构化公式+光线描写+负面约束缺一不可（2026-04-08）
 - **参考图必须用用户原图**：检查时间戳，确认是用户刚发的，不是之前生成的图
 - **游戏内容用游戏词汇**：UE5/game CG/game screenshot，禁用 photorealistic/cinematic photography
+- **⚠️ 执行前必须先查MEMORY.md**：不允许凭记忆试，试错后及时补录方法（2026-04-09）
 
 ## 用户当前工作流（2026-04-09更新）
 
