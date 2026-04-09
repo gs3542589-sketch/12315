@@ -123,60 +123,47 @@
 - **参考图必须用用户原图**：检查时间戳，确认是用户刚发的，不是之前生成的图
 - **游戏内容用游戏词汇**：UE5/game CG/game screenshot，禁用 photorealistic/cinematic photography
 
-## 用户当前工作流（2026-04-08更新）
+## 用户当前工作流（2026-04-09更新）
+
+### 核心配置
 - **主力生图模型：Gemini（Google Imagen）** ← 日常使用
 - 主力对话模型：MiniMax M2.7（hytriu/MiniMax-M2.7-highspeed）
 - 内容平台：抖音 + B站
-- 关注模型：Qwen2.5-14B本地部署（RTX 4070 12GB可跑INT4量化版）
-- 当前痛点：提示词生成图片质量差 → 已创建aigc-prompt-factory技能解决
+- 显卡：RTX 4070 12GB
 
-## 环境修复记录（2026-04-05）
-### 已完成
-- [x] 显卡升级：RTX 4060 8GB → RTX 4070 12GB ✅ 2026-04-05
-- [x] QMD向量嵌入：安装@node-llama-cpp/win-x64-cuda@3.18.1 → embed成功，89 chunks/38 docs ✅
-- [x] QMD修复：qmd.cmd依赖/bin/sh不可用→创建qmd-wrapper.js(ESM)→路径用正斜杠→provider=qmd已生效
-- [x] QMD wrapper路径：D:/OPENCLOW/QClaw/resources/openclaw/config/skills/qclaw-openclaw/scripts/qmd-wrapper.js
-- [x] QMD collection过滤：wrapper自动忽略OpenClaw传的未知collection名(如memory-root-agent-xxx)
-- [x] Git推送：gh auth refresh后权限恢复，私有仓库gs3542589-sketch/12315已正常同步
-- [x] ffmpeg安装：v8.1，winget安装→复制到D:\OPENCLOW\QClaw\tools\绕过安全策略
-- [x] Python 3.12安装：py -3.12可用，为PyTorch CUDA准备
-- [x] 汇报验证规则已写入AGENTS.md：每项标注✅已验证/⚠️未验证
-### 今日修复（2026-04-06）
-- [x] PyTorch CUDA ✅：根因Python 3.14不在cu124索引，改用Python 3.12 → torch=2.6.0+cu124, CUDA=True, RTX 4070
+### 当前项目：图片提示词质量优化（2026-04-08启动）
+**问题**：用户生成的图片质量差强人意
+**根因**：提示词结构不完整、缺光线描写、缺负面约束
 
-### 待完成
-- [x] QMD GPU加速 ✅ 2026-04-09：根因是qmd调用getLlama()时未传gpu参数，已patch llm.js添加QMD_GPU环境变量支持
-- [~] YUNWU_IMAGE_KEY：已配置，仅生图时使用
+**已完成工作**：
+1. ✅ 创建 `aigc-prompt-factory` 技能（位置：`skills/aigc-prompt-factory/`）
+2. ✅ 完成提示词研究成果汇总（26KB，存于`memory/2026-04-08-prompt-research.md`）
+3. ✅ 内置公式：图片提示词结构化公式 + Seedance 2.0视频公式
+4. ✅ 质量增强词库 + 负面提示词模板 + 光线描写模板
 
-### QMD GPU修复记录（2026-04-09）
-**根因分析**：
-- 之前记录"CUDA 12.8与node-llama-cpp不兼容"**不准确**
-- 真正原因：qmd的llm.js调用`getLlama({build: 'autoAttempt'})`时未传`gpu`参数
-- node-llama-cpp默认行为：不传gpu参数时只用CPU，不会自动检测GPU
-
-**验证结果**：
-- `getLlama({build: 'autoAttempt'})` → GPU: false
-- `getLlama({gpu: 'auto', build: 'autoAttempt'})` → GPU: cuda ✅
-- `getLlama({gpu: 'cuda', build: 'autoAttempt'})` → GPU: cuda ✅
-
-**修复方案**：
-- 已patch `C:\Users\Administrator\.bun\install\cache\@tobilu\qmd@2.0.1@@registry.npmmirror.com@@@1\dist\llm.js`
-- 添加环境变量`QMD_GPU`支持，默认值为"auto"
-- 修复后qmd status显示：`GPU: cuda (offloading: yes)`
-
-**使用方法**：
-```powershell
-# 默认自动检测GPU
-qmd query "测试"
-
-# 强制使用CPU
-$env:QMD_GPU = "cpu"; qmd query "测试"
-
-# 强制使用CUDA
-$env:QMD_GPU = "cuda"; qmd query "测试"
+**提示词万能公式**：
+```
+主体 + 动作过程 + 场景 + 光线 + 镜头语言 + 风格质感 + 画质标签 + 负面约束
 ```
 
-**注意**：qmd升级后需要重新patch，或提PR给qmd作者
+**待完成**：
+- [ ] 使用 aigc-prompt-factory 为用户生成第一批优化提示词
+- [ ] 测试提示词效果，根据反馈迭代
+
+### 记忆系统改进（2026-04-09）
+**问题**：跨天对话时"忘记"昨天的工作
+**根因**：启动流程只读取今天的Daily日志，昨天的不会自动加载
+
+**解决方案**：
+1. 核心工作流程写入MEMORY.md（长期记忆）← 当前操作
+2. 启动时主动QMD检索"最近工作"关键词
+
+## 环境配置速查（详细记录见memory/archive/）
+- 显卡：RTX 4070 12GB ✅
+- QMD：GPU加速已启用（QMD_GPU=auto）✅
+- ffmpeg：v8.1 ✅
+- Python：3.12 ✅
+- Git：已授权 ✅
 
 ### API Key 配置管理（2026-04-08·铁律）
 **云雾API使用限制（最高优先级·禁止违反）：**

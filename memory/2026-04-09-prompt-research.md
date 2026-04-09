@@ -191,6 +191,188 @@ sharp focus, soft focus, matte painting
 
 ---
 
+## 七、材质细节 - 质感描写技巧
+
+### 7.1 材质对美感的影响
+
+材质细节是区分"普通图片"和"高质量图片"的关键因素：
+- **纹理密度**：粗糙/细腻程度影响触感联想
+- **光泽特性**：哑光/缎面/高光表达材质等级
+- **表面细节**：裂纹、毛孔、织物纹理增加真实感
+- **反射/折射**：金属、玻璃、水滴的光学特性
+
+### 7.2 常见材质关键词库
+
+| 材质类型 | 关键词 | 适用场景 |
+|----------|--------|----------|
+| 金属 | brushed metal, polished chrome, oxidized copper, gold foil, matte black metal | 科技产品、奢侈品 |
+| 皮革 | full-grain leather, patent leather, worn leather, suede | 时尚、配饰 |
+| 织物 | silk fabric, cotton weave, velvet, lace, cashmere, denim texture | 服装、家居 |
+| 石材 | marble veining, granite texture, concrete, slate, limestone | 建筑、室内 |
+| 木材 | oak grain, walnut burl, bamboo texture, weathered wood | 家居、自然 |
+| 皮肤 | poreless skin, dewy skin, matte skin, sun-kissed, porcelain | 人像、肖像 |
+| 玻璃 | frosted glass, crystal clear, shattered glass, iridescent | 饮品、装饰 |
+| 水 | liquid mercury, water droplets, ice crystals, oil slick | 创意、抽象 |
+
+### 7.3 质感描写公式
+
+```
+[材质名称] + [处理工艺] + [表面状态] + [光泽特性]
+
+示例：
+"full-grain leather, hand-stitched, aged patina, subtle sheen"
+"marble stone, white veining, polished surface, soft diffuse reflection"
+```
+
+### 7.4 光泽度层级
+
+| 描述 | 关键词 | 视觉效果 |
+|------|--------|----------|
+| 极致哑光 | matte, flat, chalky | 无反光、高级感 |
+| 缎面 | satin, silk, eggshell | 柔和光泽、优雅 |
+| 半光 | semi-gloss, pearl, satin | 适度反光、丰富 |
+| 高光 | glossy, polished, chrome | 强烈反光、奢华 |
+| 镜面 | mirror-like, reflective, liquid | 完全反射、科幻 |
+
+### 7.5 材质与光线交互
+
+| 材质 | 光线表现 | 提示词示例 |
+|------|----------|------------|
+| 金属 | 高光锐利、反射环境 | "chrome surface reflecting sunset" |
+| 丝绸 | 柔和散射、渐变光泽 | "silk fabric catching light" |
+| 玉石 | 半透明、温润光泽 | "jade stone with subsurface scattering" |
+| 水 | 折射、涟漪、焦散 | "water surface with caustics" |
+| 毛皮 | 散射光晕、毛发高光 | "furry texture with rim lighting" |
+
+### 7.6 整合到分层描述法
+
+**第六层（材质）**：材质名称 + 处理工艺 + 表面细节 + 光泽度
+
+```
+完整示例：
+"close-up perfume bottle, glass bottle with gold cap,
+frosted glass texture, beveled edges, crystal clear liquid inside,
+three-point lighting, rim light highlighting glass edges,
+warm color palette, luxury brand aesthetic,
+macro lens, extreme detail, 8K, photorealistic"
+```
+
+---
+
+---
+
+## 八、网上专业Prompt示例提取 - 材质关键词库（2026-04-09新增）
+
+### 8.1 从实际Prompt案例提取的材质关键词
+
+来源：mj02.com Midjourney中文网站实际案例
+
+**面料/纺织类**：
+```
+做旧麂皮, aged suede
+扎染棉布, tie-dyed cotton
+丝绸, silk, 丝绸圆领
+丝绒, velvet, 丝绒镶边, 丝绒披风
+蕾丝, lace, 蕾丝衬衫
+缎面, satin, 珍珠缎面, 缎面印花
+亮片, sequin, 亮片身体链, 碎钻
+麂皮, suede
+纺织, fabric
+棉布, cotton
+```
+
+**金属/珠宝类**：
+```
+亮面刺绣, glossy embroidery
+金属肩甲, metal shoulder armor
+银质雕花, silver engraved
+精致金属, exquisite metal
+宝石, gemstone, 镶嵌宝石
+钻石, diamond, 钻石光泽
+串珠链, bead chain
+流苏, tassel, 流苏肩带链
+```
+
+**光泽度层级（网络提取版）**：
+```
+亮面, glossy, 亮面刺绣
+磨砂, frosted, 磨砂玻璃
+流光溢彩, iridescence
+璀璨晶莹, sparkling crystal
+通透, transparent, 通透光影
+斑驳, mottled, 斑驳光影
+柔和, soft, 柔和均匀
+```
+
+**质感描写补充**：
+```
+CG质感, CG texture
+超写实CG质感, hyper-realistic CG
+电影级光影, cinematic lighting
+高细节渲染, high detail rendering
+精致细节, exquisite detail
+细腻, delicate, 细腻质感
+线条流畅, smooth lines
+```
+
+**材质+光线组合**：
+```
+丝绸面料捕捉光线, silk fabric catching light
+磨砂玻璃水蒸气, frosted glass with steam
+金属反射夕阳, metal reflecting sunset
+流水水晶光泽, water with crystal shine
+```
+
+---
+
+## 九、完整材质关键词速查表
+
+### 9.1 材质分类速查
+
+| 类别 | 中文关键词 | 英文关键词 |
+|------|------------|------------|
+| **金属** | 拉丝金属,抛光镀铬,氧化铜,金箔,哑光黑金 | brushed metal, polished chrome, oxidized copper, gold foil, matte black metal |
+| **皮革** | 全粒面皮革,漆皮,做旧皮革,麂皮绒 | full-grain leather, patent leather, worn leather, suede |
+| **丝绸织物** | 真丝面料,棉质编织,天鹅绒,蕾丝,羊绒 | silk fabric, cotton weave, velvet, lace, cashmere |
+| **石材** | 大理石纹,花岗岩,混凝土,板岩,石灰岩 | marble veining, granite texture, concrete, slate, limestone |
+| **木材** | 橡木纹,胡桃木瘿,竹子,风化木 | oak grain, walnut burl, bamboo texture, weathered wood |
+| **玻璃** | 磨砂玻璃,水晶透明,碎玻璃,彩虹色玻璃 | frosted glass, crystal clear, shattered glass, iridescent |
+| **珠宝** | 钻石,珍珠,红宝石,蓝宝石,翡翠 | diamond, pearl, ruby, sapphire, jade |
+| **毛皮/毛发** | 皮毛,貂皮,狐狸毛,羊毛 | fur, mink, fox fur, wool |
+
+### 9.2 光泽度速查
+
+| 程度 | 中文 | 英文 | 视觉效果 |
+|------|------|------|----------|
+| 最强哑光 | 哑光,平光,粉笔质 | matte, flat, chalky | 无反光,高级感 |
+| 缎面 | 缎面,丝绸,蛋壳纹 | satin, silk, eggshell | 柔和光泽,优雅 |
+| 半光 | 半光,珍珠光,绸缎光 | semi-gloss, pearl, satin | 适度反光,丰富层次 |
+| 高光 | 高光,抛光,镀铬 | glossy, polished, chrome | 强烈反光,奢华 |
+| 镜面 | 镜面般,液态金属 | mirror-like, reflective, liquid | 完全反射,科幻 |
+
+### 9.3 材质+光线万能组合
+
+```
+# 金属质感
+[金属类型] + [光泽] + [反射环境]
+示例：polished chrome reflecting neon lights, oxidized copper catching sunset
+
+# 丝绸/织物
+[织物类型] + [光线描述] + [动态]
+示例：silk fabric catching golden hour light, velvet draping naturally
+
+# 玻璃/透明
+[玻璃类型] + [光线效果] + [状态]
+示例：frosted glass with soft light transmission, crystal clear with caustics
+
+# 玉石/半透明
+[材质] + [散射效果] + [光泽]
+示例：jade with subsurface scattering, amber with warm glow
+```
+
+---
+
 ## 数据来源
 - 搜索时间：2026-04-09
 - 搜索关键词：prompt engineering framework, cinematic lighting techniques photography, color theory photography visual composition, reverse prompt engineering
+- 补充来源：mj02.com Midjourney中文网站实际Prompt案例
