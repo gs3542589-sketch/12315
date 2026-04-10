@@ -12,6 +12,38 @@
       "name": "记忆系统优化",
       "type": "project",
       "started": "2026-04-09T18:00:00"
+    },
+    "decision:采用Python来实现这个功能": {
+      "name": "采用Python来实现这个功能",
+      "type": "decision",
+      "first_seen": "2026-04-10T09:25:26.436908",
+      "last_updated": "2026-04-10T09:25:26.436908",
+      "label": "决策",
+      "source": "auto_extract"
+    },
+    "tool:Python来实现这个功能": {
+      "name": "Python来实现这个功能",
+      "type": "tool",
+      "first_seen": "2026-04-10T09:25:26.436908",
+      "last_updated": "2026-04-10T09:25:26.436908",
+      "label": "工具",
+      "source": "auto_extract"
+    },
+    "tool:正则表达式和JSON库": {
+      "name": "正则表达式和JSON库",
+      "type": "tool",
+      "first_seen": "2026-04-10T09:25:26.436908",
+      "last_updated": "2026-04-10T09:25:26.436908",
+      "label": "工具",
+      "source": "auto_extract"
+    },
+    "project:一个归档脚本": {
+      "name": "一个归档脚本",
+      "type": "project",
+      "first_seen": "2026-04-10T09:25:26.436908",
+      "last_updated": "2026-04-10T09:25:26.436908",
+      "label": "项目",
+      "source": "auto_extract"
     }
   },
   "relations": [
@@ -32,6 +64,12 @@
       "relation": "includes",
       "to": "feature:知识图谱",
       "valid_from": "2026-04-09T18:00:00"
+    },
+    {
+      "from": "entity:我们决定采用Python来实现这个功能_",
+      "relation": "relates_to",
+      "to": "entity:正则表达式和JSON库",
+      "valid_from": "2026-04-10T09:25:26.436760"
     }
   ],
   "facts": [
@@ -46,6 +84,30 @@
     {
       "entity": "feature:四层启动",
       "fact": "L0身份/L1核心/L2近期/L3存档，分层降低Token"
+    },
+    {
+      "entity": "decision:采用Python来实现这个功能",
+      "fact": "[自动抽取] 决策：采用Python来实现这个功能",
+      "source_text": "我们决定采用Python来实现这个功能，使用了正则表达式和JSON库。我们新建了一个归档脚本。",
+      "valid_from": "2026-04-10T09:25:26.436716"
+    },
+    {
+      "entity": "tool:Python来实现这个功能",
+      "fact": "[自动抽取] 工具：Python来实现这个功能",
+      "source_text": "我们决定采用Python来实现这个功能，使用了正则表达式和JSON库。我们新建了一个归档脚本。",
+      "valid_from": "2026-04-10T09:25:26.436741"
+    },
+    {
+      "entity": "tool:正则表达式和JSON库",
+      "fact": "[自动抽取] 工具：正则表达式和JSON库",
+      "source_text": "我们决定采用Python来实现这个功能，使用了正则表达式和JSON库。我们新建了一个归档脚本。",
+      "valid_from": "2026-04-10T09:25:26.436746"
+    },
+    {
+      "entity": "project:一个归档脚本",
+      "fact": "[自动抽取] 项目：一个归档脚本",
+      "source_text": "我们决定采用Python来实现这个功能，使用了正则表达式和JSON库。我们新建了一个归档脚本。",
+      "valid_from": "2026-04-10T09:25:26.436751"
     }
   ]
 }

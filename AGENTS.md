@@ -34,17 +34,35 @@
 
 ---
 
-## 归档执行流程（2026-04-09·新增强制）
+## 归档执行流程（2026-04-10·自动化版）
 
-### 对话归档时机
-- 重要测试完成后 → `python scripts/archive_conversation.py "测试名"`
-- 决策形成后 → `python scripts/archive_conversation.py "决策内容"`
-- 用户要求时 → 立即归档
+### P0: KG自动入库（规则抽取）
+- **脚本**：`scripts/kg_auto_extract.py`
+- **触发**：发现新实体/决策/偏好时，调用抽取脚本
+- **用法**：
+  - `echo "对话文本" | python scripts/kg_auto_extract.py` （stdin模式，PowerShell中文有问题）
+  - `python scripts/kg_auto_extract.py --file input.txt` ✅ 推荐
+  - `python scripts/kg_auto_extract.py --file input.txt --dry-run` ✅ 仅预览
+- **抽取类型**：decision / preference / tool / project / rule / issue
+- **去重**：自动跳过已存在的实体和事实
 
-### 知识图谱入库时机
-- 发现新实体（用户偏好/项目/工具）→ 添加入KG
-- 重要决策 → 添加 `decision:xxx` 实体 + 关系
-- 时序事实 → 记录 valid_from 时间戳
+### P1: 归档触发自动化
+- **脚本**：`scripts/auto_archive.py`
+- **触发条件**（满足任一）：
+  - 单会话对话轮次 > 30轮
+  - 命中关键词：测试/决策/项目/完成/失败/方案/优化/新增/git等
+  - 轮次 > 60（强制归档）
+- **冷却机制**：同话题归档间隔 ≥ 12小时
+- **Cron推荐**：`每2小时`扫描一次会话
+- **用法**：
+  - `python scripts/auto_archive.py --dry-run` 审计模式
+  - `python scripts/auto_archive.py --check-session KEY --message-count N [--has-keywords] [--topic X]` 检查会话
+  - `python scripts/auto_archive.py --do-archive --session KEY --topic X --file msgs.json` 执行归档
+
+### 对话归档时机（优先级）
+1. **自动归档**：cron触发 `auto_archive.py`，符合条件自动执行
+2. **手动归档**：重要测试/决策完成后 → `archive_conversation.py "话题"`
+3. **KG入库**：发现新实体时 → `kg_auto_extract.py --file input.txt`
 
 ---
 

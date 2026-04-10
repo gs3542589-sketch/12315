@@ -1,0 +1,6 @@
+[
+  {"role": "user", "text": "我们决定采用Python来实现这个功能"},
+  {"role": "assistant", "text": "好的，开始写脚本"},
+  {"role": "user", "text": "完成了吗"},
+  {"role": "assistant", "text": "已完成"}
+]
